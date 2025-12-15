@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTechMarquee();
     initBackgroundCanvas();
     initProjectsMenu();
+    initContactForm();
 });
 
 function initCacheCleanup() {
@@ -480,4 +481,114 @@ function hexToRgb(hex) {
         g: (number >> 8) & 255,
         b: number & 255,
     };
+}
+
+
+// ===== Contact Form with Mailto =====
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    const CONTACT_EMAIL = 'webdaniel2025@gmail.com';
+    
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email');
+    const messageInput = document.getElementById('contact-message');
+    const submitBtn = form.querySelector('.btn-submit');
+    const successMessage = form.querySelector('.form-success');
+
+    // Validation patterns
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Clear error on input
+    const clearError = (input) => {
+        input.classList.remove('error');
+        const errorSpan = input.parentElement.querySelector('.form-error');
+        if (errorSpan) errorSpan.textContent = '';
+    };
+
+    // Show error
+    const showError = (input, message) => {
+        input.classList.add('error');
+        const errorSpan = input.parentElement.querySelector('.form-error');
+        if (errorSpan) errorSpan.textContent = message;
+    };
+
+    // Validate form
+    const validateForm = () => {
+        let isValid = true;
+
+        // Name validation
+        if (!nameInput.value.trim()) {
+            showError(nameInput, 'El nombre es requerido');
+            isValid = false;
+        } else {
+            clearError(nameInput);
+        }
+
+        // Email validation
+        if (!emailInput.value.trim()) {
+            showError(emailInput, 'El email es requerido');
+            isValid = false;
+        } else if (!emailPattern.test(emailInput.value.trim())) {
+            showError(emailInput, 'Email no válido');
+            isValid = false;
+        } else {
+            clearError(emailInput);
+        }
+
+        // Message validation
+        if (!messageInput.value.trim()) {
+            showError(messageInput, 'El mensaje es requerido');
+            isValid = false;
+        } else {
+            clearError(messageInput);
+        }
+
+        return isValid;
+    };
+
+    // Clear errors on input
+    [nameInput, emailInput, messageInput].forEach(input => {
+        if (input) {
+            input.addEventListener('input', () => clearError(input));
+        }
+    });
+
+    // Form submit handler
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (!validateForm()) return;
+
+        // Build mailto URL
+        const name = encodeURIComponent(nameInput.value.trim());
+        const email = encodeURIComponent(emailInput.value.trim());
+        const message = encodeURIComponent(messageInput.value.trim());
+        
+        const subject = encodeURIComponent(`Contacto desde Portfolio: ${nameInput.value.trim()}`);
+        const body = encodeURIComponent(
+            `Nombre: ${nameInput.value.trim()}\n` +
+            `Email: ${emailInput.value.trim()}\n\n` +
+            `Mensaje:\n${messageInput.value.trim()}`
+        );
+
+        const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+
+        // Open mailto
+        window.location.href = mailtoUrl;
+
+        // Show success message
+        if (successMessage) {
+            successMessage.classList.add('show');
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 4000);
+        }
+
+        // Reset form after short delay
+        setTimeout(() => {
+            form.reset();
+        }, 500);
+    });
 }

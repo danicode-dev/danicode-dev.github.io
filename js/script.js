@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initBackgroundCanvas();
     initProjectsMenu();
     initContactForm();
+    initTypingAnimation();
+    initDownloadCV();
 });
 
 function initCacheCleanup() {
@@ -590,5 +592,65 @@ function initContactForm() {
         setTimeout(() => {
             form.reset();
         }, 500);
+    });
+}
+
+
+// ===== Typing Animation =====
+function initTypingAnimation() {
+    const element = document.getElementById('typing-text');
+    if (!element) return;
+
+    const phrases = [
+        'Web Developer',
+        'Digital Creator',
+        'Frontend Enthusiast',
+        'Problem Solver'
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+
+    function type() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            element.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50;
+        } else {
+            element.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            isDeleting = true;
+            typingSpeed = 2000; // Pause at end
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typingSpeed = 500; // Pause before next phrase
+        }
+
+        setTimeout(type, typingSpeed);
+    }
+
+    // Start after a short delay
+    setTimeout(type, 1000);
+}
+
+// ===== Download CV =====
+function initDownloadCV() {
+    const btn = document.getElementById('download-cv');
+    if (!btn) return;
+
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // TODO: Replace with actual CV URL
+        alert('CV download feature coming soon! Add your CV file to assets/cv.pdf');
+        // window.open('./assets/cv.pdf', '_blank');
     });
 }

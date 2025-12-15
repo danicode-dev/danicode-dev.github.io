@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     initCacheCleanup();
+    initThemeToggle();
     initSmoothScrolling();
     initScrollReveal();
     initTechMarquee();
@@ -23,6 +24,62 @@ function initCacheCleanup() {
             });
         })
         .catch(() => {});
+}
+
+function initThemeToggle() {
+    const toggleButton = document.getElementById('theme-toggle');
+    if (!toggleButton) return;
+
+    const themeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const getTheme = () => document.documentElement.dataset.theme || 'dark';
+
+    const updateButton = (theme) => {
+        const isDark = theme === 'dark';
+        const label = isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro';
+
+        toggleButton.setAttribute('aria-label', label);
+        toggleButton.setAttribute('title', label);
+        toggleButton.setAttribute('aria-pressed', String(isDark));
+        toggleButton.innerHTML = isDark
+            ? '<i class="fas fa-sun" aria-hidden="true"></i>'
+            : '<i class="fas fa-moon" aria-hidden="true"></i>';
+    };
+
+    const applyTheme = (theme, { persist } = { persist: true }) => {
+        document.documentElement.dataset.theme = theme;
+
+        if (persist) {
+            localStorage.setItem('theme', theme);
+        }
+
+        updateButton(theme);
+        window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+    };
+
+    if (!document.documentElement.dataset.theme) {
+        const storedTheme = localStorage.getItem('theme');
+        const theme = storedTheme || (themeQuery.matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+    }
+
+    updateButton(getTheme());
+
+    toggleButton.addEventListener('click', () => {
+        const next = getTheme() === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+    });
+
+    const syncWithSystem = () => {
+        if (localStorage.getItem('theme')) return;
+        applyTheme(themeQuery.matches ? 'dark' : 'light', { persist: false });
+    };
+
+    if (typeof themeQuery.addEventListener === 'function') {
+        themeQuery.addEventListener('change', syncWithSystem);
+    } else if (typeof themeQuery.addListener === 'function') {
+        themeQuery.addListener(syncWithSystem);
+    }
 }
 
 function initTechMarquee() {
@@ -200,7 +257,13 @@ function initBackgroundCanvas() {
     const context = canvas.getContext('2d', { alpha: true });
     if (!context) return;
 
-    const colors = getCanvasColors();
+    let colors = getCanvasColors();
+
+    const onThemeChange = () => {
+        colors = getCanvasColors();
+    };
+
+    window.addEventListener('themechange', onThemeChange);
 
     const config = {
         maxDpr: 2,

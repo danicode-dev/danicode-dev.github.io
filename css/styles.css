@@ -1,5 +1,6 @@
 /* ===== GitHub Dark Theme ===== */
 :root {
+  color-scheme: dark;
   /* Background Colors */
   --bg-primary: #0D1117;
   --bg-secondary: #161B22;
@@ -33,6 +34,21 @@
 
   /* Gradients */
   --gradient-main: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F6F8FA;
+  --bg-tertiary: #EAEEF2;
+  --border-color: #D0D7DE;
+  --border-subtle: #D0D7DE;
+  --text-primary: #1F2328;
+  --text-secondary: #57606A;
+  --text-muted: #6E7781;
+  --accent-blue: #0969DA;
+  --accent-green: #1A7F37;
+  --accent-purple: #8250DF;
 }
 
 * {
@@ -181,7 +197,7 @@ ul {
 
 .btn-secondary:hover {
   background: var(--primary-color);
-  color: #070A12;
+  color: var(--bg-primary);
 }
 
 .section-title {
@@ -283,12 +299,14 @@ nav {
   justify-content: center;
   width: 36px;
   height: 36px;
+  padding: 0;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   color: var(--text-secondary);
   font-size: 0.95rem;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .icon-btn:hover {

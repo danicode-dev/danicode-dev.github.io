@@ -4,6 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (() => {
+            try {
+                const storedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.dataset.theme = storedTheme || (prefersDark ? 'dark' : 'light');
+            } catch (error) { }
+        })();
+    </script>
     <title>danicode-dev | Portfolio</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="./css/styles.css?v=a7ed222c">
@@ -33,6 +42,10 @@
 
                     <!-- Right: Social Icons -->
                     <div class="nav-right">
+                        <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-label="Cambiar tema"
+                            aria-pressed="false" title="Cambiar tema">
+                            <i class="fas fa-sun" aria-hidden="true"></i>
+                        </button>
                         <div class="nav-icons">
                             <a href="https://github.com/danicode-dev" target="_blank" rel="noopener noreferrer"
                                 aria-label="GitHub" class="icon-btn">

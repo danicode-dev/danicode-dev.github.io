@@ -19,7 +19,8 @@
         <header>
             <div class="container">
                 <nav>
-                    <div class="logo-container">
+                    <!-- Left: Logo + Menu -->
+                    <div class="nav-left">
                         <div class="projects-menu">
                             <button class="hamburger-btn" id="hamburger-btn" aria-label="Menú de proyectos"
                                 aria-expanded="false">
@@ -46,13 +47,28 @@
                             </div>
                         </div>
                         <div class="logo">DanielDev</div>
+                        <ul class="nav-links">
+                            <li><a href="#home" class="nav-pill active">Inicio</a></li>
+                            <li><a href="#projects" class="nav-pill">Proyectos</a></li>
+                            <li><a href="#about" class="nav-pill">Sobre Mí</a></li>
+                            <li><a href="#contact" class="nav-pill">Contacto</a></li>
+                        </ul>
                     </div>
-                    <ul class="nav-links">
-                        <li><a href="#home">Inicio</a></li>
-                        <li><a href="#projects">Proyectos</a></li>
-                        <li><a href="#about">Sobre Mí</a></li>
-                        <li><a href="#contact">Contacto</a></li>
-                    </ul>
+
+                    <!-- Right: Social Icons + CTA -->
+                    <div class="nav-right">
+                        <div class="nav-social">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                                aria-label="LinkedIn" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/danicode-dev" target="_blank" rel="noopener noreferrer"
+                                aria-label="GitHub" class="social-icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                        <a href="#contact" class="nav-cta">Contacto</a>
+                    </div>
                 </nav>
             </div>
         </header>

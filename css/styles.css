@@ -431,7 +431,7 @@ nav {
 /* Name with Typing Effect */
 .hero-name {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 7vw, 5rem);
+  font-size: clamp(3.5rem, 8vw, 6rem);
   font-weight: 700;
   line-height: 1.1;
   color: var(--text-primary);
@@ -678,13 +678,13 @@ nav {
   align-items: baseline;
   gap: 1.5rem;
   /* Space between label and value */
-  font-size: 1.05rem;
+  font-size: 1.15rem;
 }
 
 .stack-label {
   flex: 0 0 130px;
   /* Fixed width for alignment */
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--text-primary);
   opacity: 0.9;
@@ -693,7 +693,7 @@ nav {
 .stack-value {
   flex: 1;
   /* Takes remaining space */
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
   font-weight: 400;
   line-height: 1.5;

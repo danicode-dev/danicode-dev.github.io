@@ -250,16 +250,32 @@ ul {
 }
 
 /* Header */
+/* Header - SaaS Glass Effect */
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 0;
-  background: var(--header-bg);
-  backdrop-filter: blur(12px);
+  padding: 1.25rem 0;
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1000;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid transparent;
+}
+
+header.scrolled {
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(48, 54, 61, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="light"] header.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(208, 215, 222, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 nav {
@@ -274,44 +290,110 @@ nav {
   gap: 2rem;
 }
 
-.logo {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-primary);
+/* Logo Brand */
+.logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
 }
 
-.logo:hover {
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(22, 27, 34, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.logo-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.logo-first {
   color: var(--accent-blue);
 }
 
-/* Nav Links */
+.logo-last {
+  color: var(--text-primary);
+}
+
+.logo-brand:hover .logo-icon {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 15px rgba(88, 166, 255, 0.15);
+}
+
+/* Nav Links - Pro SaaS Style */
 .nav-links {
   display: flex;
-  gap: 0.25rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  background: rgba(22, 27, 34, 0.4);
+  padding: 0.25rem;
+  border-radius: 50px;
+  border: 1px solid transparent;
 }
 
 .nav-link {
+  position: relative;
   display: inline-block;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-secondary);
-  border-radius: 6px;
-  transition: all 0.2s ease;
+  border-radius: 50px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: none;
 }
 
+/* Hover Interaction */
 .nav-link:hover {
   color: var(--text-primary);
-  background: var(--bg-tertiary);
 }
 
+/* Active "Pill" State via Class */
 .nav-link.active {
   color: var(--text-primary);
-  background: var(--bg-secondary);
+  background: rgba(48, 54, 61, 0.5);
+  /* Fallback / Simple Pill */
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="light"] .nav-link.active {
+  background: #ffffff;
+  color: #0969DA;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Animated Underline on Hover (outside active) */
+.nav-link:not(.active)::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--accent-blue);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-link:not(.active):hover::after {
+  width: 40%;
 }
 
 /* Nav Right - Icon Buttons + CTA */

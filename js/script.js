@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initCacheCleanup();
     initThemeToggle();
     initSmoothScrolling();
+    initSmoothScrolling();
+    initNavbar();
     initScrollReveal();
     initBackgroundCanvas();
     initProjectsMenu();
@@ -101,6 +103,50 @@ function initThemeToggle() {
 }
 
 
+
+
+function initNavbar() {
+    const header = document.querySelector('header');
+    const links = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+
+    // Sticky + Shrink Header
+    const handleScroll = () => {
+        if (window.scrollY > 20) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Init check
+
+    // Scrollspy for Active Pill
+    const observerOptions = {
+        root: null,
+        rootMargin: '-50% 0px -50% 0px', // Active when section is in middle of viewport
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove active from all
+                links.forEach(link => link.classList.remove('active'));
+
+                // Add active to corresponding link
+                const id = entry.target.getAttribute('id');
+                const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+}
 
 function initProjectsMenu() {
     const hamburgerBtn = document.getElementById('hamburger-btn');

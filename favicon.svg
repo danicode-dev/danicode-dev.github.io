@@ -1,7 +1,7 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="64" height="64" rx="16" fill="#0D1117"/>
-    <!-- D: Blue Triangle pointing right -->
-    <path d="M14 18L34 32L14 46V18Z" fill="#58A6FF" stroke="#58A6FF" stroke-width="4" stroke-linejoin="round"/>
-    <!-- G: White angular shape interlocking -->
-    <path d="M30 46H50V28L40 36" stroke="#E6EDF3" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect width="64" height="64" rx="16" fill="#050505"/>
+    <!-- Blue D: Hollow Triangle -->
+    <path d="M14 14L38 32L14 50V14Z" stroke="#007BFF" stroke-width="7" stroke-linejoin="round" fill="none"/>
+    <!-- White G: Angular Shape -->
+    <path d="M50 22L28 38L50 54H32" stroke="#E6EDF3" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>

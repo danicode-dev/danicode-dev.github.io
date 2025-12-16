@@ -34,6 +34,13 @@
 
   /* Gradients */
   --gradient-main: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+
+  /* Theme-specific Component Colors (Dark Default) */
+  --glass-bg: rgba(22, 27, 34, 0.6);
+  --chip-bg: #1e252e;
+  --chip-border: #4a525d;
+  --chip-text: #ffffff;
+  --chip-shadow: rgba(0, 0, 0, 0.5);
 }
 
 :root[data-theme="light"] {
@@ -48,7 +55,17 @@
   --text-muted: #6E7781;
   --accent-blue: #0969DA;
   --accent-green: #1A7F37;
+  --accent-blue: #0969DA;
+  --accent-green: #1A7F37;
   --accent-purple: #8250DF;
+
+  /* Light Mode Component Overrides */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --chip-bg: #ffffff;
+  --chip-border: #d0d7de;
+  --chip-text: #0969DA;
+  /* Blue text for contrast/style in light mode */
+  --chip-shadow: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -549,7 +566,7 @@ nav {
 
 .about-card {
   position: relative;
-  background: rgba(22, 27, 34, 0.6);
+  background: var(--glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: 20px;
@@ -873,26 +890,20 @@ nav {
   flex: 0 0 auto;
   padding: 0.6rem 1.2rem;
 
-  /* Visible Chip Style */
-  background: #1e252e;
-  /* Solid dark color matching theme but visible */
-  border: 1px solid #4a525d;
-  /* Softer but visible border */
+  /* Visible Chip Style - Theme Aware */
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
 
   border-radius: 50px;
   font-size: 0.95rem;
-  /* Slightly larger text */
   font-weight: 600;
-  /* Bolder text */
-  color: #ffffff;
-  /* Pure white text */
+  color: var(--chip-text);
   white-space: nowrap;
   transition: all 0.3s ease;
 
   /* Ensure visibility */
   opacity: 1;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  /* Stronger shadow */
+  box-shadow: 0 4px 10px var(--chip-shadow);
 }
 
 .tech-chip:hover {

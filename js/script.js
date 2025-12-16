@@ -607,3 +607,114 @@ function initParticles() {
         init();
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    initProjectsMarquee();
+});
+
+function initProjectsMarquee() {
+    const marquee = document.querySelector('[data-projects-marquee]');
+    if (!marquee) return;
+
+    const track = marquee.querySelector('[data-projects-track]');
+    const group = marquee.querySelector('[data-projects-group]');
+    if (!track || !group) return;
+
+    const cards = group.querySelectorAll('.project-card');
+    if (cards.length < 2) return;
+
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+    const coarsePointerQuery = window.matchMedia('(hover: none) and (pointer: coarse)');
+
+    const cloneSelector = '[data-marquee-clone="true"]';
+    const pxPerSecond = 30;
+    let resizeObserver = null;
+    let rafId = 0;
+    let hasWindowResizeListener = false;
+
+    const handleWindowResize = () => {
+        setMarqueeVars();
+    };
+
+    const setMarqueeVars = () => {
+        cancelAnimationFrame(rafId);
+
+        rafId = window.requestAnimationFrame(() => {
+            const distance = Math.ceil(group.getBoundingClientRect().width);
+            if (!distance) return;
+
+            track.style.setProperty('--projects-marquee-distance', `${distance}px`);
+            track.style.setProperty('--projects-marquee-duration', `${(distance / pxPerSecond).toFixed(2)}s`);
+        });
+    };
+
+    const buildCloneGroup = () => {
+        const clone = group.cloneNode(true);
+        clone.dataset.marqueeClone = 'true';
+        clone.setAttribute('aria-hidden', 'true');
+
+        clone.querySelectorAll('[id]').forEach((node) => node.removeAttribute('id'));
+        clone.querySelectorAll('a, button, input, textarea, select, [tabindex]').forEach((node) => {
+            node.setAttribute('tabindex', '-1');
+        });
+
+        return clone;
+    };
+
+    const teardown = () => {
+        marquee.classList.remove('projects-marquee--animate');
+        track.style.removeProperty('--projects-marquee-distance');
+        track.style.removeProperty('--projects-marquee-duration');
+
+        track.querySelectorAll(cloneSelector).forEach((node) => node.remove());
+
+        if (resizeObserver) {
+            resizeObserver.disconnect();
+        }
+
+        if (hasWindowResizeListener) {
+            window.removeEventListener('resize', handleWindowResize);
+            hasWindowResizeListener = false;
+        }
+
+        cancelAnimationFrame(rafId);
+    };
+
+    const setup = () => {
+        teardown();
+
+        const shouldAnimate = !reducedMotionQuery.matches && !mobileQuery.matches && !coarsePointerQuery.matches;
+        if (!shouldAnimate) return;
+
+        if (!track.querySelector(cloneSelector)) {
+            track.appendChild(buildCloneGroup());
+        }
+
+        marquee.classList.add('projects-marquee--animate');
+        setMarqueeVars();
+
+        if ('ResizeObserver' in window) {
+            resizeObserver = resizeObserver || new ResizeObserver(() => setMarqueeVars());
+            resizeObserver.disconnect();
+            resizeObserver.observe(group);
+        } else if (!hasWindowResizeListener) {
+            window.addEventListener('resize', handleWindowResize, { passive: true });
+            hasWindowResizeListener = true;
+        }
+    };
+
+    setup();
+
+    const handleMediaChange = () => {
+        setup();
+    };
+
+    [reducedMotionQuery, mobileQuery, coarsePointerQuery].forEach((query) => {
+        if (typeof query.addEventListener === 'function') {
+            query.addEventListener('change', handleMediaChange);
+        } else if (typeof query.addListener === 'function') {
+            query.addListener(handleMediaChange);
+        }
+    });
+}

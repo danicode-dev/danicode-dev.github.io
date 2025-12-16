@@ -1,12 +1,14 @@
 /* CV Professional - Daniel García Ortega */
-/* ATS-Friendly, Single Column, Clean Design */
+/* Con iconos Font Awesome y diseño moderno */
 
 :root {
     --primary: #1e40af;
+    --primary-light: #3b82f6;
     --text-dark: #0f172a;
     --text-medium: #334155;
     --text-light: #64748b;
     --bg: #ffffff;
+    --bg-light: #f8fafc;
     --border: #e2e8f0;
     --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -37,13 +39,13 @@ body {
 /* HEADER */
 .header {
     text-align: center;
-    padding-bottom: 12px;
-    border-bottom: 2px solid var(--primary);
-    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid var(--primary);
+    margin-bottom: 16px;
 }
 
 .header h1 {
-    font-size: 22pt;
+    font-size: 24pt;
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 2px;
@@ -52,8 +54,8 @@ body {
 .header .title {
     font-size: 11pt;
     color: var(--primary);
-    font-weight: 500;
-    margin-bottom: 8px;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .header-contact {
@@ -62,41 +64,58 @@ body {
 }
 
 .contact-row {
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 .contact-row span {
-    margin: 0 8px;
+    margin: 0 10px;
+}
+
+.contact-row i {
+    color: var(--primary);
+    margin-right: 4px;
 }
 
 .contact-links a {
     color: var(--primary);
     text-decoration: none;
+    font-weight: 500;
 }
 
 .contact-links a:hover {
     text-decoration: underline;
 }
 
+.contact-links i {
+    margin-right: 4px;
+}
+
 .contact-links .sep {
     color: var(--text-light);
-    margin: 0 6px;
+    margin: 0 8px;
 }
 
 /* SECTIONS */
 .section {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .section h2 {
-    font-size: 10pt;
+    font-size: 11pt;
     font-weight: 600;
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section h2 i {
+    font-size: 12pt;
 }
 
 /* PROFILE */
@@ -104,6 +123,7 @@ body {
     color: var(--text-medium);
     text-align: justify;
     font-size: 9pt;
+    line-height: 1.5;
 }
 
 .profile-text strong {
@@ -112,57 +132,75 @@ body {
 
 /* TECH GRID */
 .tech-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.tech-row {
+.tech-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-light);
+    padding: 6px 12px;
+    border-radius: 6px;
     font-size: 9pt;
-}
-
-.tech-label {
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.tech-items {
+    border: 1px solid var(--border);
     color: var(--text-medium);
+    font-weight: 500;
+}
+
+.tech-item i {
+    font-size: 14pt;
+    color: var(--primary-light);
 }
 
 /* PROJECTS */
 .project {
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+    padding: 10px;
+    background: var(--bg-light);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
 }
 
 .project:last-child {
-    border-bottom: none;
     margin-bottom: 0;
 }
 
 .project-header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 4px;
+    align-items: center;
+    margin-bottom: 6px;
 }
 
 .project-header h3 {
-    font-size: 9.5pt;
+    font-size: 10pt;
     font-weight: 600;
     color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.project-header h3 i {
+    color: var(--primary);
 }
 
 .project-tech {
-    font-size: 8pt;
+    display: flex;
+    gap: 8px;
+}
+
+.project-tech i {
+    font-size: 14pt;
     color: var(--text-light);
 }
 
 .project ul {
-    margin-left: 16px;
-    margin-bottom: 4px;
+    margin-left: 20px;
+    margin-bottom: 6px;
 }
 
 .project li {
@@ -172,13 +210,18 @@ body {
 }
 
 .project-links {
-    font-size: 8pt;
+    display: flex;
+    gap: 16px;
 }
 
 .project-links a {
     color: var(--primary);
     text-decoration: none;
-    margin-right: 12px;
+    font-size: 8.5pt;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .project-links a:hover {
@@ -187,8 +230,8 @@ body {
 
 /* EXPERIENCE */
 .experience {
-    margin-bottom: 10px;
-    padding-bottom: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
 }
 
@@ -200,11 +243,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 .exp-header h3 {
-    font-size: 9.5pt;
+    font-size: 10pt;
     font-weight: 600;
     color: var(--text-dark);
 }
@@ -218,6 +261,9 @@ body {
 .exp-header .date {
     font-size: 8pt;
     color: var(--text-light);
+    background: var(--bg-light);
+    padding: 3px 10px;
+    border-radius: 12px;
     white-space: nowrap;
 }
 
@@ -228,19 +274,19 @@ body {
 .experience li {
     font-size: 8.5pt;
     color: var(--text-medium);
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 }
 
 .roles {
     font-size: 8pt;
     color: var(--text-light);
-    margin-top: 4px;
+    margin-top: 6px;
     font-style: italic;
 }
 
 /* EDUCATION */
 .education {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .edu-header {
@@ -250,7 +296,7 @@ body {
 }
 
 .edu-header h3 {
-    font-size: 9.5pt;
+    font-size: 10pt;
     font-weight: 600;
     color: var(--text-dark);
 }
@@ -261,19 +307,25 @@ body {
 }
 
 .institution {
-    font-size: 8.5pt;
+    font-size: 9pt;
     color: var(--primary);
+    font-weight: 500;
 }
 
 /* FOOTER */
 .footer {
     display: flex;
     justify-content: space-between;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
-    margin-top: 10px;
+    padding-top: 12px;
+    border-top: 2px solid var(--border);
+    margin-top: 12px;
     font-size: 8pt;
     color: var(--text-medium);
+}
+
+.footer i {
+    color: var(--primary);
+    margin-right: 4px;
 }
 
 .optional {
@@ -289,20 +341,25 @@ body {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary), #1e3a8a);
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
+    padding: 14px 28px;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     font-family: var(--font);
-    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.35);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .print-btn:hover {
-    background: #1e3a8a;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(30, 64, 175, 0.45);
 }
 
 /* PRINT */
@@ -321,6 +378,10 @@ body {
 
     .print-btn {
         display: none;
+    }
+
+    .project {
+        break-inside: avoid;
     }
 
     @page {

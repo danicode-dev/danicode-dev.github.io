@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -21,23 +23,26 @@
             </div>
             <div class="header-contact">
                 <div class="contact-row">
-                    <span>📞 673 971 322</span>
-                    <span>✉️ dangarort123@gmail.com</span>
-                    <span>📍 Zaidín, Granada</span>
+                    <span><i class="fas fa-phone"></i> 673 971 322</span>
+                    <span><i class="fas fa-envelope"></i> webdaniel2025@gmail.com</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Zaidín, Granada</span>
                 </div>
                 <div class="contact-links">
-                    <a href="https://github.com/danicode-dev">github.com/danicode-dev</a>
+                    <a href="https://github.com/danicode-dev" target="_blank"><i class="fab fa-github"></i>
+                        github.com/danicode-dev</a>
                     <span class="sep">·</span>
-                    <a href="https://linkedin.com/in/daniel-garcía-ortega-404754385">LinkedIn</a>
+                    <a href="https://linkedin.com/in/daniel-garcía-ortega-404754385" target="_blank"><i
+                            class="fab fa-linkedin"></i> LinkedIn</a>
                     <span class="sep">·</span>
-                    <a href="https://danicode-dev.github.io/PORTAFOLIO/">Portfolio</a>
+                    <a href="https://danicode-dev.github.io/PORTFOLIO/" target="_blank"><i class="fas fa-globe"></i>
+                        Portfolio</a>
                 </div>
             </div>
         </header>
 
         <!-- PERFIL -->
         <section class="section">
-            <h2>Perfil</h2>
+            <h2><i class="fas fa-user"></i> Perfil</h2>
             <p class="profile-text">
                 Estudiante de CFGS en Desarrollo de Aplicaciones Web con base sólida en <strong>Java, JavaScript,
                     HTML/CSS y SQL</strong>.
@@ -52,80 +57,93 @@
 
         <!-- TECNOLOGÍAS -->
         <section class="section">
-            <h2>Tecnologías</h2>
+            <h2><i class="fas fa-code"></i> Tech Stack</h2>
             <div class="tech-grid">
-                <div class="tech-row">
-                    <span class="tech-label">Lenguajes:</span>
-                    <span class="tech-items">Java · JavaScript · SQL</span>
-                </div>
-                <div class="tech-row">
-                    <span class="tech-label">Web:</span>
-                    <span class="tech-items">HTML5 · CSS3</span>
-                </div>
-                <div class="tech-row">
-                    <span class="tech-label">Herramientas:</span>
-                    <span class="tech-items">Git · GitHub · VS Code · MySQL</span>
-                </div>
-                <div class="tech-row">
-                    <span class="tech-label">SO:</span>
-                    <span class="tech-items">Linux · Windows</span>
-                </div>
+                <div class="tech-item"><i class="fab fa-java"></i> Java</div>
+                <div class="tech-item"><i class="fab fa-js-square"></i> JavaScript</div>
+                <div class="tech-item"><i class="fab fa-html5"></i> HTML5</div>
+                <div class="tech-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+                <div class="tech-item"><i class="fas fa-database"></i> SQL</div>
+                <div class="tech-item"><i class="fab fa-git-alt"></i> Git</div>
+                <div class="tech-item"><i class="fab fa-github"></i> GitHub</div>
+                <div class="tech-item"><i class="fab fa-linux"></i> Linux</div>
+                <div class="tech-item"><i class="fas fa-code"></i> VS Code</div>
+                <div class="tech-item"><i class="fas fa-database"></i> MySQL</div>
             </div>
         </section>
 
         <!-- PROYECTOS -->
         <section class="section">
-            <h2>Proyectos Destacados</h2>
+            <h2><i class="fas fa-rocket"></i> Proyectos Destacados</h2>
 
             <div class="project">
                 <div class="project-header">
-                    <h3>Juego del Ahorcado</h3>
-                    <span class="project-tech">Java · HTML · CSS · JS</span>
+                    <h3><i class="fas fa-gamepad"></i> Juego del Ahorcado</h3>
+                    <div class="project-tech">
+                        <i class="fab fa-java"></i>
+                        <i class="fab fa-html5"></i>
+                        <i class="fab fa-css3-alt"></i>
+                        <i class="fab fa-js-square"></i>
+                    </div>
                 </div>
                 <ul>
                     <li>Web app interactiva con múltiples modos de juego y categorías de palabras</li>
                     <li>Sistema de estadísticas de partidas y puntuación persistente</li>
                 </ul>
                 <div class="project-links">
-                    <a href="https://danicode-dev.github.io/ahorcado/">Demo</a>
-                    <a href="https://github.com/danicode-dev/ahorcado">Repositorio</a>
+                    <a href="https://danicode-dev.github.io/ahorcado/" target="_blank"><i
+                            class="fas fa-external-link-alt"></i> Demo</a>
+                    <a href="https://github.com/danicode-dev/ahorcado" target="_blank"><i class="fab fa-github"></i>
+                        Repositorio</a>
                 </div>
             </div>
 
             <div class="project">
                 <div class="project-header">
-                    <h3>Test de Mecanografía</h3>
-                    <span class="project-tech">JavaScript · HTML · CSS</span>
+                    <h3><i class="fas fa-keyboard"></i> Test de Mecanografía</h3>
+                    <div class="project-tech">
+                        <i class="fab fa-js-square"></i>
+                        <i class="fab fa-html5"></i>
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
                 </div>
                 <ul>
                     <li>Test de velocidad de escritura estilo Monkeytype</li>
                     <li>Métricas en tiempo real: WPM, precisión, errores</li>
                 </ul>
                 <div class="project-links">
-                    <a href="https://danicode-dev.github.io/Test_mecagonagrafia/">Demo</a>
-                    <a href="https://github.com/danicode-dev/Test_mecagonagrafia">Repositorio</a>
+                    <a href="https://danicode-dev.github.io/Test_mecagonagrafia/" target="_blank"><i
+                            class="fas fa-external-link-alt"></i> Demo</a>
+                    <a href="https://github.com/danicode-dev/Test_mecagonagrafia" target="_blank"><i
+                            class="fab fa-github"></i> Repositorio</a>
                 </div>
             </div>
 
             <div class="project">
                 <div class="project-header">
-                    <h3>Smart Form</h3>
-                    <span class="project-tech">JavaScript · HTML · CSS</span>
+                    <h3><i class="fas fa-file-alt"></i> Smart Form</h3>
+                    <div class="project-tech">
+                        <i class="fab fa-js-square"></i>
+                        <i class="fab fa-html5"></i>
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
                 </div>
                 <ul>
                     <li>Formulario con validación JavaScript pura (sin atributos HTML5)</li>
                     <li>Diseño moderno con efecto glassmorphism</li>
                 </ul>
                 <div class="project-links">
-                    <a href="https://danicode-dev.github.io/FORMULARIO-/">Demo</a>
-                    <a href="https://github.com/danicode-dev/FORMULARIO-">Repositorio</a>
+                    <a href="https://danicode-dev.github.io/FORMULARIO-/" target="_blank"><i
+                            class="fas fa-external-link-alt"></i> Demo</a>
+                    <a href="https://github.com/danicode-dev/FORMULARIO-" target="_blank"><i class="fab fa-github"></i>
+                        Repositorio</a>
                 </div>
             </div>
         </section>
 
         <!-- EXPERIENCIA -->
         <section class="section">
-            <h2>Experiencia Profesional</h2>
+            <h2><i class="fas fa-briefcase"></i> Experiencia Profesional</h2>
 
             <div class="experience">
                 <div class="exp-header">
@@ -190,7 +208,7 @@
 
         <!-- FORMACIÓN -->
         <section class="section">
-            <h2>Formación Académica</h2>
+            <h2><i class="fas fa-graduation-cap"></i> Formación Académica</h2>
 
             <div class="education">
                 <div class="edu-header">
@@ -221,20 +239,22 @@
         <footer class="footer">
             <div class="footer-left">
                 <div class="lang">
-                    <strong>Idiomas:</strong> Español (nativo) · Inglés (intermedio)
+                    <i class="fas fa-language"></i> <strong>Idiomas:</strong> Español (nativo) · Inglés (intermedio)
                 </div>
             </div>
             <div class="footer-right">
                 <div class="additional">
-                    Carné B · Vehículo propio · Disponibilidad total
+                    <i class="fas fa-car"></i> Carné B · Vehículo propio · Disponibilidad total
                     <span class="optional">· Discapacidad 34% <em>(opcional)</em></span>
                 </div>
             </div>
         </footer>
     </div>
 
-    <!-- Print button (hidden when printing) -->
-    <button class="print-btn" onclick="window.print()">📄 Exportar PDF</button>
+    <!-- Print button -->
+    <button class="print-btn" onclick="window.print()">
+        <i class="fas fa-file-pdf"></i> Exportar PDF
+    </button>
 </body>
 
 </html>

@@ -28,7 +28,7 @@ function initCacheCleanup() {
                 }
             });
         })
-        .catch(() => {});
+        .catch(() => { });
 }
 
 function initThemeToggle() {
@@ -494,7 +494,7 @@ function initContactForm() {
     if (!form) return;
 
     const CONTACT_EMAIL = 'webdaniel2025@gmail.com';
-    
+
     const nameInput = document.getElementById('contact-name');
     const emailInput = document.getElementById('contact-email');
     const messageInput = document.getElementById('contact-message');
@@ -569,7 +569,7 @@ function initContactForm() {
         const name = encodeURIComponent(nameInput.value.trim());
         const email = encodeURIComponent(emailInput.value.trim());
         const message = encodeURIComponent(messageInput.value.trim());
-        
+
         const subject = encodeURIComponent(`Contacto desde Portfolio: ${nameInput.value.trim()}`);
         const body = encodeURIComponent(
             `Nombre: ${nameInput.value.trim()}\n` +
@@ -603,7 +603,7 @@ function initTypingAnimation() {
     const element = document.getElementById('typing-text');
     if (!element) return;
 
-    const phrase = 'Web Developer';
+    const phrase = 'Full Stack Developer';
     let charIndex = 0;
 
     function type() {
@@ -634,28 +634,32 @@ function initDownloadCV() {
 
 // ===== Copy Email to Clipboard =====
 function initEmailCopy() {
-    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
-    const email = 'webdaniel2025@gmail.com';
+    const emailButtons = document.querySelectorAll('.copy-email-btn');
 
-    emailLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    emailButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
             e.preventDefault();
+            const email = btn.dataset.email || 'webdaniel2025@gmail.com';
+
             navigator.clipboard.writeText(email).then(() => {
                 // Show feedback
-                const originalText = link.innerHTML;
-                const parent = link.closest('.contact-link-content');
-                if (parent) {
-                    const valueSpan = parent.querySelector('.contact-link-value');
-                    if (valueSpan) {
-                        valueSpan.textContent = '¡Copiado!';
-                        valueSpan.style.color = 'var(--accent-green)';
-                        setTimeout(() => {
-                            valueSpan.textContent = email;
-                            valueSpan.style.color = '';
-                        }, 2000);
-                    }
+                btn.classList.add('copied');
+
+                // For contact section button with feedback span
+                const feedback = btn.querySelector('.copy-feedback');
+                if (feedback) {
+                    feedback.classList.add('show');
+                    setTimeout(() => {
+                        feedback.classList.remove('show');
+                        btn.classList.remove('copied');
+                    }, 2000);
                 } else {
-                    alert('Email copiado: ' + email);
+                    // For header icon button - show tooltip
+                    btn.setAttribute('title', '¡Copiado!');
+                    setTimeout(() => {
+                        btn.setAttribute('title', 'Copiar email');
+                        btn.classList.remove('copied');
+                    }, 2000);
                 }
             }).catch(() => {
                 // Fallback: open mailto
@@ -674,14 +678,14 @@ function initParticles() {
     const ctx = canvas.getContext('2d');
     let particles = [];
     let mouse = { x: null, y: null, radius: 150 };
-    
+
     const colors = ['#58A6FF', '#00D9FF', '#A371F7', '#3FB950'];
-    
+
     function resize() {
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
     }
-    
+
     class Particle {
         constructor() {
             this.x = Math.random() * canvas.width;
@@ -692,17 +696,17 @@ function initParticles() {
             this.color = colors[Math.floor(Math.random() * colors.length)];
             this.opacity = Math.random() * 0.5 + 0.3;
         }
-        
+
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
-            
+
             // Wrap around edges
             if (this.x > canvas.width) this.x = 0;
             if (this.x < 0) this.x = canvas.width;
             if (this.y > canvas.height) this.y = 0;
             if (this.y < 0) this.y = canvas.height;
-            
+
             // Mouse interaction
             if (mouse.x !== null) {
                 const dx = mouse.x - this.x;
@@ -715,7 +719,7 @@ function initParticles() {
                 }
             }
         }
-        
+
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -725,7 +729,7 @@ function initParticles() {
             ctx.globalAlpha = 1;
         }
     }
-    
+
     function init() {
         particles = [];
         const count = Math.min(100, Math.floor((canvas.width * canvas.height) / 15000));
@@ -733,7 +737,7 @@ function initParticles() {
             particles.push(new Particle());
         }
     }
-    
+
     function connectParticles() {
         const maxDist = 120;
         for (let i = 0; i < particles.length; i++) {
@@ -741,7 +745,7 @@ function initParticles() {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                
+
                 if (dist < maxDist) {
                     const opacity = 1 - (dist / maxDist);
                     ctx.beginPath();
@@ -756,36 +760,36 @@ function initParticles() {
             }
         }
     }
-    
+
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
+
         particles.forEach(p => {
             p.update();
             p.draw();
         });
-        
+
         connectParticles();
         requestAnimationFrame(animate);
     }
-    
+
     // Mouse events
     canvas.parentElement.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouse.x = e.clientX - rect.left;
         mouse.y = e.clientY - rect.top;
     });
-    
+
     canvas.parentElement.addEventListener('mouseleave', () => {
         mouse.x = null;
         mouse.y = null;
     });
-    
+
     // Initialize
     resize();
     init();
     animate();
-    
+
     window.addEventListener('resize', () => {
         resize();
         init();

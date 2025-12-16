@@ -55,9 +55,10 @@
                                 rel="noopener noreferrer" aria-label="LinkedIn" class="icon-btn">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="mailto:webdaniel2025@gmail.com" aria-label="Email" class="icon-btn">
+                            <button type="button" class="icon-btn copy-email-btn" data-email="webdaniel2025@gmail.com"
+                                aria-label="Copiar email" title="Copiar email">
                                 <i class="fas fa-envelope"></i>
-                            </a>
+                            </button>
                         </div>
                         <a href="#contact" class="nav-cta">Contacto</a>
                     </div>
@@ -85,9 +86,8 @@
                         <a href="#projects" class="btn-hero">
                             Explore Projects
                         </a>
-                        <a href="./assets/cv.pdf" class="btn-hero btn-hero-secondary" target="_blank"
-                            rel="noopener noreferrer">
-                            <i class="fas fa-download"></i> Download CV
+                        <a href="cv/cv_es.html" class="btn-hero btn-hero-secondary" target="_blank">
+                            <i class="fas fa-file-alt"></i> Ver CV
                         </a>
                     </div>
                 </div>
@@ -257,7 +257,8 @@
 
                             <div class="contact-links">
                                 <!-- Email -->
-                                <a href="mailto:webdaniel2025@gmail.com" class="contact-link">
+                                <button type="button" class="contact-link copy-email-btn"
+                                    data-email="webdaniel2025@gmail.com">
                                     <span class="contact-link-icon">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2">
@@ -269,7 +270,8 @@
                                         <span class="contact-link-label">Email</span>
                                         <span class="contact-link-value">webdaniel2025@gmail.com</span>
                                     </span>
-                                </a>
+                                    <span class="copy-feedback">¡Copiado!</span>
+                                </button>
 
                                 <!-- LinkedIn -->
                                 <a href="https://www.linkedin.com/in/daniel-garc%C3%ADa-ortega-404754385/"

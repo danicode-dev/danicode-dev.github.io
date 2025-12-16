@@ -29,8 +29,8 @@
   --hover-bg: var(--bg-tertiary);
 
   /* Typography */
-  --font-heading: 'Sora', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
   /* Gradients */
   --gradient-main: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
@@ -97,6 +97,30 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+.logo-brand,
+.section-title {
+  font-family: var(--font-display);
+}
+
+p,
+a,
+button,
+input,
+textarea,
+nav,
+label,
+.nav-link,
+.hero-subtitle,
+.stack-value,
+.contact-link-value {
+  font-family: var(--font-body);
 }
 
 /* Canvas Background */
@@ -156,7 +180,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -234,7 +258,7 @@ ul {
 }
 
 .section-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1rem;
@@ -321,7 +345,7 @@ nav {
   display: flex;
   flex-direction: column;
   line-height: 1.1;
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
 }
@@ -555,18 +579,18 @@ nav {
 /* Name with Typing Effect */
 /* Name with Typing Effect */
 .hero-name {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700;
   line-height: 1.1;
   color: var(--text-primary);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   margin: 0;
   min-height: 1.2em;
 }
 
 .typing-name {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
 }
 
 .accentText {
@@ -607,7 +631,7 @@ nav {
 
 /* Role Title */
 .hero-role {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 600;
   color: var(--text-primary);
@@ -756,7 +780,7 @@ nav {
 }
 
 .about-card-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -1345,7 +1369,7 @@ footer {
 }
 
 .contact-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
 
@@ -1401,7 +1425,7 @@ footer {
 }
 
 .card-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-primary);

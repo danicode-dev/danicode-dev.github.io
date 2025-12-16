@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     initSmoothScrolling();
     initScrollReveal();
-    initTechMarquee();
     initBackgroundCanvas();
     initProjectsMenu();
     initContactForm();
@@ -101,78 +100,7 @@ function initThemeToggle() {
     }
 }
 
-function initTechMarquee() {
-    const marquees = document.querySelectorAll('.tech-marquee');
-    if (!marquees.length) return;
 
-    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    const getGap = (element) => {
-        const styles = window.getComputedStyle(element);
-        const gapValue = styles.columnGap || styles.gap || '0px';
-        const gap = Number.parseFloat(gapValue);
-        return Number.isFinite(gap) ? gap : 0;
-    };
-
-    const rebuildMarquee = (marquee, track) => {
-        track.querySelectorAll('.tech-chip.is-clone').forEach((clone) => clone.remove());
-        track.style.removeProperty('--marquee-distance');
-
-        if (reducedMotionQuery.matches) return;
-
-        const originals = Array.from(track.querySelectorAll('.tech-chip:not(.is-clone)'));
-        if (!originals.length) return;
-
-        const originalWidth = track.scrollWidth;
-        const distance = Math.ceil(originalWidth + getGap(track));
-
-        const appendCloneSet = () => {
-            originals.forEach((item) => {
-                const clone = item.cloneNode(true);
-                clone.classList.add('is-clone');
-                clone.setAttribute('aria-hidden', 'true');
-                track.appendChild(clone);
-            });
-        };
-
-        appendCloneSet();
-        track.style.setProperty('--marquee-distance', `${distance}px`);
-
-        const neededWidth = distance + marquee.clientWidth + 32;
-        while (track.scrollWidth < neededWidth) {
-            appendCloneSet();
-        }
-    };
-
-    const debounced = (fn, waitMs = 150) => {
-        let timer = 0;
-        return (...args) => {
-            window.clearTimeout(timer);
-            timer = window.setTimeout(() => fn(...args), waitMs);
-        };
-    };
-
-    const instances = Array.from(marquees)
-        .map((marquee) => ({ marquee, track: marquee.querySelector('.tech-marquee-track') }))
-        .filter(({ track }) => Boolean(track));
-
-    if (!instances.length) return;
-
-    const rebuildAll = () => {
-        instances.forEach(({ marquee, track }) => rebuildMarquee(marquee, track));
-    };
-
-    const rebuildAllDebounced = debounced(rebuildAll, 150);
-    window.addEventListener('resize', rebuildAllDebounced);
-
-    if (typeof reducedMotionQuery.addEventListener === 'function') {
-        reducedMotionQuery.addEventListener('change', rebuildAll);
-    } else if (typeof reducedMotionQuery.addListener === 'function') {
-        reducedMotionQuery.addListener(rebuildAll);
-    }
-
-    rebuildAll();
-}
 
 function initProjectsMenu() {
     const hamburgerBtn = document.getElementById('hamburger-btn');

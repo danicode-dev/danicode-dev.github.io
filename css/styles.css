@@ -666,8 +666,8 @@ nav {
 .about-card-stack {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  padding: 1rem 0;
+  gap: 0.75rem;
+  padding: 1.25rem 0;
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -675,24 +675,27 @@ nav {
 .stack-item {
   display: flex;
   align-items: baseline;
-  gap: 0.75rem;
+  gap: 1.5rem;
+  /* Space between label and value */
+  font-size: 0.9rem;
 }
 
 .stack-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--accent-blue);
-  /* Better contrast/visibility */
-  min-width: 85px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  flex: 0 0 130px;
+  /* Fixed width for alignment */
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
   opacity: 0.9;
 }
 
 .stack-value {
-  font-size: 0.95rem;
-  color: var(--text-primary);
-  font-weight: 500;
+  flex: 1;
+  /* Takes remaining space */
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 /* Status Badges */
@@ -842,176 +845,20 @@ nav {
   }
 }
 
-/* Tech Stack Marquee (Inside Hero) */
-.tech-marquee {
-  position: absolute;
-  bottom: 3rem;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  padding: 0.75rem 0;
-  --marquee-duration: 25s;
-  --marquee-fade-size: 64px;
-}
-
-.tech-marquee::before,
-.tech-marquee::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: var(--marquee-fade-size);
-  z-index: 1;
-  pointer-events: none;
-}
-
-.tech-marquee::before {
-  left: 0;
-  background: linear-gradient(to right, var(--bg-primary), transparent);
-}
-
-.tech-marquee::after {
-  right: 0;
-  background: linear-gradient(to left, var(--bg-primary), transparent);
-}
-
-.tech-marquee-track {
-  display: flex;
-  gap: 1rem;
-  width: max-content;
-  --marquee-distance: 50%;
-  will-change: transform;
-  animation: marquee var(--marquee-duration) linear infinite;
-}
-
-.tech-marquee-track:hover {
-  animation-play-state: paused;
-}
-
-.tech-marquee-track:hover .tech-chip {
-  animation-play-state: paused;
-}
-
-.tech-marquee {
-  /* ... existing styles ... */
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-.tech-chip {
-  display: inline-flex;
-  line-height: 1;
-  align-items: center;
-  gap: 0.6rem;
-  flex: 0 0 auto;
-  padding: 0.6rem 1.2rem;
-
-  /* Visible Chip Style - Theme Aware */
-  background: var(--chip-bg);
-  border: 1px solid var(--chip-border);
-
-  border-radius: 50px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--chip-text);
-  white-space: nowrap;
-  transition: all 0.3s ease;
-
-  /* Ensure visibility */
-  opacity: 1;
-  box-shadow: 0 4px 10px var(--chip-shadow);
-}
-
-.tech-chip:hover {
-  border-color: var(--accent-blue);
-  color: var(--text-primary);
-  background: rgba(88, 166, 255, 0.15);
-  /* Glow effect */
-  box-shadow: 0 0 15px rgba(88, 166, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
-  z-index: 10;
-}
-
-.tech-chip:nth-child(2n) {
-  animation-duration: 5.1s;
-  animation-delay: -1.7s;
-}
-
-.tech-chip:nth-child(3n) {
-  animation-duration: 3.7s;
-  animation-delay: -2.4s;
-}
-
-.tech-chip:nth-child(5n) {
-  animation-duration: 4.8s;
-  animation-delay: -0.9s;
-}
-
-
-
-.tech-chip i {
-  font-size: 0.9rem;
-  color: var(--accent-blue);
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
+/* Responsive Stack for Mobile */
+@media (max-width: 480px) {
+  .stack-item {
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
-  100% {
-    transform: translateX(calc(-1 * var(--marquee-distance, 50%)));
+  .stack-label {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-bottom: 2px;
   }
 }
 
-@keyframes grid-drift {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: var(--grid-size) var(--grid-size);
-  }
-}
-
-@keyframes tech-float {
-
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: translate3d(0, -6px, 0);
-  }
-}
-
-@keyframes icon-float {
-
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(-1deg);
-  }
-
-  50% {
-    transform: translate3d(0, -10px, 0) rotate(1deg);
-  }
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .tech-marquee-track {
-    animation: none;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: auto;
-  }
-
-  .tech-chip {
-    animation: none;
-    transform: none;
-  }
-}
 
 /* Projects Section */
 .projects {

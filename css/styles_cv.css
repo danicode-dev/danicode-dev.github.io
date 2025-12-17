@@ -61,16 +61,17 @@ body {
 
 .header-info h1 {
     font-family: 'Panchang', sans-serif;
-    font-size: 38pt;
-    /* Much larger */
-    line-height: 1.1;
+    font-size: 28pt;
+    /* Reverted to smaller size */
+    line-height: 1.2;
     font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
     text-transform: uppercase;
     /* Gradient text effect for "color" request */
     background: linear-gradient(to bottom, #ffffff 0%, #e2e8f0 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }

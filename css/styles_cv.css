@@ -1,0 +1,507 @@
+/* CV Template Styles - Professional Edition */
+/* Daniel García Ortega - 2025 */
+
+:root {
+    /* COLORES - Tema profesional */
+    --primary: #1e40af;
+    --primary-light: #3b82f6;
+    --primary-dark: #1e3a8a;
+    --accent: #0ea5e9;
+    --text-dark: #0f172a;
+    --text-medium: #475569;
+    --text-light: #64748b;
+    --bg-white: #ffffff;
+    --bg-light: #f1f5f9;
+    --bg-sidebar: #f8fafc;
+    --border: #e2e8f0;
+    --success: #10b981;
+
+    /* FUENTES */
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background: #94a3b8;
+    color: var(--text-dark);
+    line-height: 1.5;
+    font-size: 9.5pt;
+}
+
+/* Container A4 */
+.cv-container {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    background: var(--bg-white);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* HEADER */
+.cv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+}
+
+.header-info h1 {
+    font-family: 'Panchang', sans-serif;
+    font-size: 28pt;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.header-info .subtitle {
+    font-size: 11pt;
+    font-weight: 500;
+    opacity: 0.95;
+}
+
+.header-info .tagline {
+    font-size: 9pt;
+    opacity: 0.8;
+    font-weight: 300;
+    margin-top: 2px;
+}
+
+.header-contact {
+    text-align: right;
+    font-size: 9pt;
+}
+
+.header-contact p {
+    margin: 4px 0;
+    opacity: 0.95;
+}
+
+.header-contact i {
+    width: 16px;
+    margin-right: 6px;
+    opacity: 0.8;
+}
+
+.header-links {
+    margin-top: 10px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.header-links a {
+    color: white;
+    font-size: 18px;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.header-links a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* TWO COLUMN LAYOUT */
+.cv-body {
+    display: grid;
+    grid-template-columns: 185px 1fr;
+}
+
+/* SIDEBAR */
+.cv-sidebar {
+    background: var(--bg-sidebar);
+    padding: 20px 15px;
+    border-right: 1px solid var(--border);
+}
+
+.sidebar-section {
+    margin-bottom: 22px;
+}
+
+.sidebar-section h2 {
+    font-size: 9pt;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sidebar-section h2 i {
+    font-size: 10pt;
+}
+
+/* INFO LIST */
+.info-list {
+    list-style: none;
+    font-size: 8pt;
+    color: var(--text-medium);
+}
+
+.info-list li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+}
+
+.info-list li i {
+    color: var(--primary-light);
+    font-size: 8pt;
+    margin-top: 2px;
+}
+
+/* TECH SKILLS */
+.tech-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tech-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 8pt;
+    border: 1px solid var(--border);
+    color: var(--text-medium);
+}
+
+.tech-item i {
+    color: var(--primary-light);
+    font-size: 11pt;
+}
+
+/* SOFT SKILLS */
+.soft-skills {
+    list-style: none;
+    font-size: 8pt;
+}
+
+.soft-skills li {
+    padding: 4px 0;
+    color: var(--text-medium);
+    border-bottom: 1px solid var(--border);
+}
+
+.soft-skills li:last-child {
+    border-bottom: none;
+}
+
+/* LANGUAGES */
+.language-item {
+    margin-bottom: 12px;
+}
+
+.lang-name {
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--text-dark);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.lang-bar {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 2px;
+}
+
+.lang-level {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 3px;
+}
+
+.lang-label {
+    font-size: 7pt;
+    color: var(--text-light);
+}
+
+/* MAIN CONTENT */
+.cv-main {
+    padding: 20px 25px;
+}
+
+.cv-section {
+    margin-bottom: 20px;
+}
+
+.cv-section h2 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 14px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cv-section h2 i {
+    font-size: 12pt;
+}
+
+/* CV ITEMS */
+.cv-item {
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.cv-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+}
+
+.item-header h3 {
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.item-header .company {
+    font-size: 9pt;
+    color: var(--primary-light);
+    font-weight: 500;
+    margin-top: 1px;
+}
+
+.item-header .date {
+    font-size: 8pt;
+    color: var(--text-light);
+    font-weight: 500;
+    background: var(--bg-light);
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.cv-item ul {
+    margin-left: 16px;
+    margin-top: 6px;
+}
+
+.cv-item li {
+    color: var(--text-medium);
+    margin-bottom: 3px;
+    font-size: 8.5pt;
+}
+
+/* TAGS */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.tag {
+    background: var(--bg-light);
+    color: var(--text-medium);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 8pt;
+    border: 1px solid var(--border);
+}
+
+/* PROJECTS */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.project {
+    background: var(--bg-light);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.project-header i {
+    font-size: 14pt;
+    color: var(--primary);
+}
+
+.project-header h3 {
+    font-size: 9pt;
+    font-weight: 600;
+}
+
+.project p {
+    font-size: 8pt;
+    color: var(--text-medium);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.project-tech {
+    display: flex;
+    gap: 8px;
+}
+
+.project-tech i {
+    font-size: 14pt;
+    color: var(--text-light);
+    transition: color 0.2s;
+}
+
+.project-tech i:hover {
+    color: var(--primary);
+}
+
+/* FOOTER */
+.cv-footer {
+    padding: 12px 25px;
+    background: var(--bg-sidebar);
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.cv-footer p {
+    font-size: 8pt;
+    color: var(--text-light);
+}
+
+.cv-footer a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.cv-footer a:hover {
+    text-decoration: underline;
+}
+
+.cv-footer .separator {
+    margin: 0 12px;
+    color: var(--border);
+}
+
+/* PRINT BUTTON */
+.print-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 40px rgba(30, 64, 175, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: var(--font-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.print-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 50px rgba(30, 64, 175, 0.4);
+}
+
+.print-btn i {
+    font-size: 16px;
+}
+
+/* PRINT STYLES */
+@media print {
+    body {
+        background: white;
+    }
+
+    .cv-container {
+        margin: 0;
+        box-shadow: none;
+        width: 100%;
+    }
+
+    .print-btn {
+        display: none;
+    }
+
+    .project:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    @page {
+        size: A4;
+        margin: 0;
+    }
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 800px) {
+    .cv-container {
+        width: 100%;
+        margin: 0;
+    }
+
+    .cv-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .header-contact {
+        text-align: center;
+    }
+
+    .header-links {
+        justify-content: center;
+    }
+
+    .cv-body {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}

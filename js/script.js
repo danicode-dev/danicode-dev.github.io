@@ -5,12 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initInactivityAutoscroll();
     initNavbar();
     initScrollReveal();
-    initProjectsMenu();
     initProjectsMarquee();
 
     initTypingAnimation();
     initEmailCopy();
     initParticles();
+    initCounters();
+    initFooterClock();
 });
 
 function initCacheCleanup() {
@@ -205,39 +206,8 @@ function initNavbar() {
     sections.forEach(section => observer.observe(section));
 }
 
-function initProjectsMenu() {
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const dropdown = document.getElementById('projects-dropdown');
 
-    if (!hamburgerBtn || !dropdown) return;
 
-    // Toggle menu on button click
-    hamburgerBtn.addEventListener('click', (event) => {
-        event.stopPropagation();
-        const isOpen = dropdown.classList.toggle('show');
-        hamburgerBtn.classList.toggle('active', isOpen);
-        hamburgerBtn.setAttribute('aria-expanded', isOpen);
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (event) => {
-        if (!dropdown.contains(event.target) && !hamburgerBtn.contains(event.target)) {
-            dropdown.classList.remove('show');
-            hamburgerBtn.classList.remove('active');
-            hamburgerBtn.setAttribute('aria-expanded', 'false');
-        }
-    });
-
-    // Close menu on escape key
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && dropdown.classList.contains('show')) {
-            dropdown.classList.remove('show');
-            hamburgerBtn.classList.remove('active');
-            hamburgerBtn.setAttribute('aria-expanded', 'false');
-            hamburgerBtn.focus();
-        }
-    });
-}
 
 function initSmoothScrolling() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -657,4 +627,130 @@ function initProjectsMarquee() {
             query.addListener(handleMediaChange);
         }
     });
+}
+
+// ===== Animated Counters =====
+function initCounters() {
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+    if (!counters.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Observer to start animation when visible
+    const observer = new IntersectionObserver((entries, observerInstance) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.getAttribute('data-target');
+
+                if (prefersReducedMotion) {
+                    counter.textContent = target + '+';
+                    observerInstance.unobserve(counter);
+                    return;
+                }
+
+                // Animation logic
+                const duration = 2000; // 2 seconds
+                const frameDuration = 1000 / 60; // 60fps
+                const totalFrames = Math.round(duration / frameDuration);
+                let currentFrame = 0;
+
+                const easeOutQuad = t => t * (2 - t);
+
+                const animate = () => {
+                    currentFrame++;
+                    const progress = easeOutQuad(currentFrame / totalFrames);
+                    const currentCount = Math.round(target * progress);
+
+                    if (currentFrame < totalFrames) {
+                        counter.textContent = currentCount + '+';
+                        requestAnimationFrame(animate);
+                    } else {
+                        counter.textContent = target + '+';
+                    }
+                };
+
+                animate();
+                observerInstance.unobserve(counter);
+            }
+        });
+    }, {
+        threshold: 0.5 // Start when 50% visible
+    });
+
+    counters.forEach(counter => observer.observe(counter));
+}
+
+// Footer Clock - Real-time update
+function initFooterClock() {
+    const timeEl = document.getElementById('footer-time');
+    const dateEl = document.getElementById('footer-date');
+    if (!timeEl || !dateEl) return;
+
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    function getOrdinal(n) {
+        const s = ['th', 'st', 'nd', 'rd'];
+        const v = n % 100;
+        return n + (s[(v - 20) % 10] || s[v] || s[0]);
+    }
+
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const mins = String(now.getMinutes()).padStart(2, '0');
+
+        timeEl.textContent = `${hours}:${mins}`;
+        dateEl.textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${getOrdinal(now.getDate())}, ${now.getFullYear()}`;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+}
+
+// Footer Typing Animation
+function initFooterTyping() {
+    const element = document.getElementById('footer-typing-name');
+    const cursor = document.getElementById('footer-cursor');
+    if (!element) return;
+
+    const text = 'Daniel García · Aspiring Full-Stack Developer';
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        element.textContent = text;
+        if (cursor) cursor.style.display = 'none';
+        return;
+    }
+
+    let hasAnimated = false;
+    let charIndex = 0;
+
+    function typeChar() {
+        if (charIndex <= text.length) {
+            element.textContent = text.substring(0, charIndex);
+            charIndex++;
+            setTimeout(typeChar, 50);
+        } else {
+            if (cursor) {
+                setTimeout(() => {
+                    cursor.style.transition = 'opacity 0.5s ease';
+                    cursor.style.opacity = '0';
+                }, 1500);
+            }
+        }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasAnimated) {
+                hasAnimated = true;
+                setTimeout(typeChar, 300);
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(element);
 }

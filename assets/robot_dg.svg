@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <!-- Main body gradient - darker -->
+    <radialGradient id="bodyGradient" cx="40%" cy="30%" r="60%" fx="40%" fy="30%">
+      <stop offset="0%" style="stop-color:#5a6068"/>
+      <stop offset="40%" style="stop-color:#3d4349"/>
+      <stop offset="100%" style="stop-color:#1f2226"/>
+    </radialGradient>
+    
+    <!-- Silver metallic gradient -->
+    <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4d6d8"/>
+      <stop offset="30%" style="stop-color:#a8abae"/>
+      <stop offset="70%" style="stop-color:#808488"/>
+      <stop offset="100%" style="stop-color:#606468"/>
+    </linearGradient>
+    
+    <!-- Top silver panel -->
+    <linearGradient id="topSilver" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8eaec"/>
+      <stop offset="50%" style="stop-color:#c0c4c8"/>
+      <stop offset="100%" style="stop-color:#909498"/>
+    </linearGradient>
+    
+    <!-- Eye glow gradient -->
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="40%">
+      <stop offset="0%" style="stop-color:#ffe0a0"/>
+      <stop offset="50%" style="stop-color:#ffb840"/>
+      <stop offset="100%" style="stop-color:#ff8c00"/>
+    </radialGradient>
+    
+    <!-- Visor gradient -->
+    <radialGradient id="visorGradient" cx="50%" cy="40%" r="60%" fx="50%" fy="30%">
+      <stop offset="0%" style="stop-color:#2a2d30"/>
+      <stop offset="100%" style="stop-color:#0a0c0e"/>
+    </radialGradient>
+    
+    <!-- DG glow -->
+    <linearGradient id="dgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffc040"/>
+      <stop offset="100%" style="stop-color:#ff9000"/>
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="orangeGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur"/>
+      <feOffset dx="5" dy="5" result="offsetBlur"/>
+      <feComposite in="SourceGraphic" in2="offsetBlur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Main spherical body -->
+  <ellipse cx="250" cy="260" rx="190" ry="185" fill="url(#bodyGradient)" stroke="#15171a" stroke-width="3"/>
+  
+  <!-- Top silver panel (helmet) -->
+  <path d="M 130 140 Q 180 80 250 70 Q 320 80 370 140 Q 400 170 410 200 L 400 210 Q 250 160 100 210 L 90 200 Q 100 170 130 140 Z" 
+        fill="url(#topSilver)" stroke="#707478" stroke-width="1.5"/>
+  
+  <!-- Top ridge -->
+  <ellipse cx="250" cy="95" rx="60" ry="15" fill="#c8ccce" stroke="#a0a4a8" stroke-width="1"/>
+  
+  <!-- Left side panel -->
+  <path d="M 75 260 Q 60 320 80 380 Q 95 420 130 440 L 155 420 Q 120 390 110 340 Q 100 290 105 260 Z" 
+        fill="url(#silverGradient)" stroke="#606468" stroke-width="1.5"/>
+  
+  <!-- Right side panel -->
+  <path d="M 425 260 Q 440 320 420 380 Q 405 420 370 440 L 345 420 Q 380 390 390 340 Q 400 290 395 260 Z" 
+        fill="url(#silverGradient)" stroke="#606468" stroke-width="1.5"/>
+  
+  <!-- Visor (black face area) -->
+  <path d="M 110 190 Q 180 160 250 155 Q 320 160 390 190 Q 420 230 410 290 Q 380 320 250 330 Q 120 320 90 290 Q 80 230 110 190 Z" 
+        fill="url(#visorGradient)" stroke="#0a0c0e" stroke-width="2"/>
+  
+  <!-- Left eye - realistic with pupil -->
+  <ellipse cx="175" cy="245" rx="30" ry="40" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <ellipse cx="175" cy="248" rx="18" ry="24" fill="url(#eyeGlow)" filter="url(#orangeGlow)"/>
+  <ellipse cx="175" cy="248" rx="10" ry="14" fill="#1a1a1a"/>
+  <ellipse cx="170" cy="242" rx="4" ry="5" fill="#ffffff" opacity="0.8"/>
+  
+  <!-- Right eye - realistic with pupil -->
+  <ellipse cx="325" cy="245" rx="30" ry="40" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+  <ellipse cx="325" cy="248" rx="18" ry="24" fill="url(#eyeGlow)" filter="url(#orangeGlow)"/>
+  <ellipse cx="325" cy="248" rx="10" ry="14" fill="#1a1a1a"/>
+  <ellipse cx="320" cy="242" rx="4" ry="5" fill="#ffffff" opacity="0.8"/>
+  
+  <!-- DG Logo - D dark, G orange -->
+  <g transform="translate(250, 380)" filter="url(#softGlow)">
+    <!-- D - White -->
+    <path d="M -35 -25 L -35 25 L -20 25 Q 0 25 0 0 Q 0 -25 -20 -25 Z M -28 -18 L -20 -18 Q -8 -18 -8 0 Q -8 18 -20 18 L -28 18 Z" 
+          fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+    <!-- G - Orange -->
+    <path d="M 15 -25 Q 45 -25 45 -5 L 38 -5 Q 38 -18 20 -18 Q 8 -18 8 0 Q 8 18 20 18 Q 35 18 35 8 L 25 8 L 25 2 L 42 2 L 42 25 L 15 25 Q -2 25 -2 0 Q -2 -25 15 -25 Z" 
+          fill="url(#dgGlow)" stroke="#ff9000" stroke-width="1"/>
+  </g>
+  
+  <!-- Bottom thrusters -->
+  <ellipse cx="140" cy="445" rx="22" ry="18" fill="#2a2d30" stroke="#1a1c1e" stroke-width="2"/>
+  <ellipse cx="140" cy="445" rx="12" ry="10" fill="url(#eyeGlow)" filter="url(#orangeGlow)" opacity="0.9"/>
+  
+  <ellipse cx="360" cy="445" rx="22" ry="18" fill="#2a2d30" stroke="#1a1c1e" stroke-width="2"/>
+  <ellipse cx="360" cy="445" rx="12" ry="10" fill="url(#eyeGlow)" filter="url(#orangeGlow)" opacity="0.9"/>
+  
+  <!-- Thruster flames -->
+  <ellipse cx="140" cy="465" rx="15" ry="25" fill="#ff6000" opacity="0.4" filter="url(#orangeGlow)"/>
+  <ellipse cx="360" cy="465" rx="15" ry="25" fill="#ff6000" opacity="0.4" filter="url(#orangeGlow)"/>
+</svg>

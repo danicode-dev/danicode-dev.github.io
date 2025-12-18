@@ -15,7 +15,7 @@
     </script>
     <title>Daniel Garcia | Portfolio</title>
     <link rel="icon" type="image/png" href="./assets/logo.png">
-    <link rel="stylesheet" href="./css/styles.css?v=1.2">
+    <link rel="stylesheet" href="./css/styles.css?v=2.1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -113,18 +113,15 @@
 
                             <!-- Name with Typing Effect -->
                             <h1 class="hero-name">
-                                <span class="typing-name accentText" id="typing-name"
-                                    data-text="Daniel García"></span><span class="typing-cursor"
-                                    id="name-cursor">|</span>
+                                <span class="typing-name" id="typing-name"
+                                    data-text="Daniel García · Aspiring Full-Stack Developer"></span><span
+                                    class="typing-cursor" id="name-cursor">|</span>
                             </h1>
 
-                            <!-- Role -->
-                            <h2 class="hero-role">Full Stack Developer</h2>
-
-                            <!-- Subtitle -->
+                            <!-- Subtitle / Description -->
                             <p class="hero-subtitle">
-                                Construyo experiencias web modernas con Java, JavaScript y bases de datos. Enfocado en
-                                proyectos reales y código limpio.
+                                Building real-world projects with clean code and best practices.<br>
+                                🚀 Always learning, always improving every day.
                             </p>
 
                             <!-- CTA Buttons -->
@@ -220,11 +217,11 @@
                                 <!-- Stats Row -->
                                 <div class="stats-row">
                                     <div class="stat-item">
-                                        <span class="stat-number">1+</span>
+                                        <span class="stat-number" data-target="1">0</span>
                                         <span class="stat-label">Year of Experience</span>
                                     </div>
                                     <div class="stat-item">
-                                        <span class="stat-number">4+</span>
+                                        <span class="stat-number" data-target="4">0</span>
                                         <span class="stat-label">Projects</span>
                                     </div>
                                     <div class="stat-item">
@@ -265,6 +262,8 @@
                                             <span class="tech-badge"><i class="fab fa-angular"></i> Angular</span>
                                             <span class="tech-badge"><i class="fab fa-bootstrap"></i> Bootstrap</span>
                                             <span class="tech-badge"><i class="fab fa-sass"></i> Sass</span>
+                                            <span class="tech-badge"><i class="fab fa-react"></i> React</span>
+                                            <span class="tech-badge"><i class="fas fa-wind"></i> Tailwind</span>
                                         </div>
                                     </div>
                                     <div class="stack-row">
@@ -275,6 +274,7 @@
                                             <span class="tech-badge"><i class="fas fa-leaf"></i> Spring</span>
                                             <span class="tech-badge"><i class="fab fa-node-js"></i> Node</span>
                                             <span class="tech-badge"><i class="fab fa-php"></i> PHP</span>
+                                            <span class="tech-badge"><i class="fas fa-server"></i> Express</span>
                                         </div>
                                     </div>
                                     <div class="stack-row">
@@ -283,6 +283,8 @@
                                             <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
                                             <span class="tech-badge"><i class="fas fa-database"></i> Oracle</span>
                                             <span class="tech-badge"><i class="fas fa-leaf"></i> MongoDB</span>
+                                            <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
+                                            <span class="tech-badge"><i class="fas fa-fire"></i> Firebase</span>
                                         </div>
                                     </div>
                                     <div class="stack-row">
@@ -293,6 +295,8 @@
                                             <span class="tech-badge"><i class="fab fa-linux"></i> Linux</span>
                                             <span class="tech-badge"><i class="fab fa-docker"></i> Docker</span>
                                             <span class="tech-badge"><i class="fab fa-figma"></i> Figma</span>
+                                            <span class="tech-badge"><i class="fas fa-rocket"></i> Postman</span>
+                                            <span class="tech-badge"><i class="fab fa-aws"></i> AWS</span>
                                         </div>
                                     </div>
                                 </div>
@@ -319,8 +323,6 @@
                         <span class="title-featured">Featured</span> <span
                             class="title-projects accentText">Projects</span>
                     </h2>
-                    <p class="section-description">Proyectos en los que he trabajado, aplicando las mejores prácticas de
-                        desarrollo</p>
                     <div class="projects-marquee" data-projects-marquee role="region" aria-label="Featured projects">
                         <div class="projects-track" data-projects-track>
                             <div class="project-grid projects-group" data-projects-group>
@@ -477,7 +479,28 @@
 
         <footer>
             <div class="container">
-                <p>&copy; 2025 Daniel Garcia.</p>
+                <div class="footer-content">
+                    <!-- Time Card -->
+                    <div class="footer-time-card">
+                        <svg class="footer-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                            fill="currentColor">
+                            <path
+                                d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z">
+                            </path>
+                            <path
+                                d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z">
+                            </path>
+                        </svg>
+                        <p class="footer-time" id="footer-time">13:31</p>
+                        <p class="footer-date" id="footer-date">Wednesday, Dec 18th</p>
+                    </div>
+
+                    <!-- Name -->
+                    <p class="footer-copyright">
+                        <span class="footer-name footer-name-blue">Daniel</span> <span
+                            class="footer-name footer-name-white">García</span>
+                    </p>
+                </div>
             </div>
         </footer>
 
@@ -486,7 +509,7 @@
 
     <!-- Floating Astronaut -->
     <a href="./404.html" class="floating-astronaut" aria-label="Lost in space?">
-        <img src="./astronaut.svg" alt="Floating Astronaut" width="80">
+        <img src="./assets/robot_dg.svg" alt="Robot DG" width="70">
     </a>
 
     <script src="./js/script.js" defer></script>

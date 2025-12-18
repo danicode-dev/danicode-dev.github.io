@@ -7,9 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initProjectsMenu();
     initProjectsMarquee();
-    initContactForm();
+
     initTypingAnimation();
-    initDownloadCV();
     initEmailCopy();
     initParticles();
 });
@@ -33,11 +32,11 @@ function initCacheCleanup() {
 }
 
 function initThemeToggle() {
-    const toggleButton = document.getElementById('theme-toggle');
-    if (!toggleButton) return;
+    const toggleCheckbox = document.getElementById('theme-toggle');
+    if (!toggleCheckbox) return;
 
     const themeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const prefersReducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
     const storage = {
         get(key) {
             try {
@@ -55,92 +54,39 @@ function initThemeToggle() {
 
     const getTheme = () => document.documentElement.dataset.theme || 'dark';
 
-    const getIconElement = () => {
-        const existing = toggleButton.querySelector('i');
-        if (existing) return existing;
-
-        const icon = document.createElement('i');
-        icon.setAttribute('aria-hidden', 'true');
-        toggleButton.appendChild(icon);
-        return icon;
-    };
-
-    const setIcon = (theme) => {
-        const icon = getIconElement();
+    // Update checkbox state based on theme
+    const updateCheckbox = (theme) => {
         const isDark = theme === 'dark';
-
-        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-        icon.setAttribute('aria-hidden', 'true');
+        toggleCheckbox.checked = isDark;
     };
 
-    const updateButton = (theme, { skipIcon } = {}) => {
-        const isDark = theme === 'dark';
-        const label = isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro';
-
-        toggleButton.setAttribute('aria-label', label);
-        toggleButton.setAttribute('title', label);
-        toggleButton.setAttribute('aria-pressed', String(isDark));
-
-        if (!skipIcon) {
-            setIcon(theme);
-        }
-    };
-
-    const applyTheme = (theme, { persist = true, skipIcon = false } = {}) => {
+    const applyTheme = (theme, { persist = true } = {}) => {
         document.documentElement.dataset.theme = theme;
 
         if (persist) {
             storage.set('theme', theme);
         }
 
-        updateButton(theme, { skipIcon });
+        updateCheckbox(theme);
         window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
     };
 
+    // Initialize theme
     if (!document.documentElement.dataset.theme) {
         const storedTheme = storage.get('theme');
         const theme = storedTheme || (themeQuery.matches ? 'dark' : 'light');
         document.documentElement.dataset.theme = theme;
     }
 
-    updateButton(getTheme());
+    updateCheckbox(getTheme());
 
-    let iconSwapTimeout = null;
-    let switchEndTimeout = null;
-
-    const clearSwitchTimers = () => {
-        if (iconSwapTimeout) {
-            window.clearTimeout(iconSwapTimeout);
-            iconSwapTimeout = null;
-        }
-
-        if (switchEndTimeout) {
-            window.clearTimeout(switchEndTimeout);
-            switchEndTimeout = null;
-        }
-    };
-
-    toggleButton.addEventListener('click', () => {
-        const next = getTheme() === 'dark' ? 'light' : 'dark';
-
-        if (prefersReducedMotionQuery.matches) {
-            applyTheme(next);
-            return;
-        }
-
-        clearSwitchTimers();
-        toggleButton.classList.add('is-switching');
-        applyTheme(next, { skipIcon: true });
-
-        iconSwapTimeout = window.setTimeout(() => {
-            setIcon(next);
-        }, 190);
-
-        switchEndTimeout = window.setTimeout(() => {
-            toggleButton.classList.remove('is-switching');
-        }, 480);
+    // Toggle change handler (checkbox)
+    toggleCheckbox.addEventListener('change', () => {
+        const next = toggleCheckbox.checked ? 'dark' : 'light';
+        applyTheme(next);
     });
 
+    // Sync with system preference
     const syncWithSystem = () => {
         if (storage.get('theme')) return;
         applyTheme(themeQuery.matches ? 'dark' : 'light', { persist: false });
@@ -387,114 +333,7 @@ function hexToRgb(hex) {
 }
 
 
-// ===== Contact Form with Mailto =====
-function initContactForm() {
-    const form = document.getElementById('contact-form');
-    if (!form) return;
 
-    const CONTACT_EMAIL = 'webdaniel2025@gmail.com';
-
-    const nameInput = document.getElementById('contact-name');
-    const emailInput = document.getElementById('contact-email');
-    const messageInput = document.getElementById('contact-message');
-    const submitBtn = form.querySelector('.btn-submit');
-    const successMessage = form.querySelector('.form-success');
-
-    // Validation patterns
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    // Clear error on input
-    const clearError = (input) => {
-        input.classList.remove('error');
-        const errorSpan = input.parentElement.querySelector('.form-error');
-        if (errorSpan) errorSpan.textContent = '';
-    };
-
-    // Show error
-    const showError = (input, message) => {
-        input.classList.add('error');
-        const errorSpan = input.parentElement.querySelector('.form-error');
-        if (errorSpan) errorSpan.textContent = message;
-    };
-
-    // Validate form
-    const validateForm = () => {
-        let isValid = true;
-
-        // Name validation
-        if (!nameInput.value.trim()) {
-            showError(nameInput, 'El nombre es requerido');
-            isValid = false;
-        } else {
-            clearError(nameInput);
-        }
-
-        // Email validation
-        if (!emailInput.value.trim()) {
-            showError(emailInput, 'El email es requerido');
-            isValid = false;
-        } else if (!emailPattern.test(emailInput.value.trim())) {
-            showError(emailInput, 'Email no válido');
-            isValid = false;
-        } else {
-            clearError(emailInput);
-        }
-
-        // Message validation
-        if (!messageInput.value.trim()) {
-            showError(messageInput, 'El mensaje es requerido');
-            isValid = false;
-        } else {
-            clearError(messageInput);
-        }
-
-        return isValid;
-    };
-
-    // Clear errors on input
-    [nameInput, emailInput, messageInput].forEach(input => {
-        if (input) {
-            input.addEventListener('input', () => clearError(input));
-        }
-    });
-
-    // Form submit handler
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        if (!validateForm()) return;
-
-        // Build mailto URL
-        const name = encodeURIComponent(nameInput.value.trim());
-        const email = encodeURIComponent(emailInput.value.trim());
-        const message = encodeURIComponent(messageInput.value.trim());
-
-        const subject = encodeURIComponent(`Contacto desde Portfolio: ${nameInput.value.trim()}`);
-        const body = encodeURIComponent(
-            `Nombre: ${nameInput.value.trim()}\n` +
-            `Email: ${emailInput.value.trim()}\n\n` +
-            `Mensaje:\n${messageInput.value.trim()}`
-        );
-
-        const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-
-        // Open mailto
-        window.location.href = mailtoUrl;
-
-        // Show success message
-        if (successMessage) {
-            successMessage.classList.add('show');
-            setTimeout(() => {
-                successMessage.classList.remove('show');
-            }, 4000);
-        }
-
-        // Reset form after short delay
-        setTimeout(() => {
-            form.reset();
-        }, 500);
-    });
-}
 
 
 // ===== Typing Animation for Name =====
@@ -547,14 +386,7 @@ function initTypingAnimation() {
     setTimeout(typeChar, config.startDelay);
 }
 
-// ===== Download CV =====
-function initDownloadCV() {
-    const btn = document.getElementById('download-cv');
-    if (!btn) return;
 
-    // Button will work once you add assets/cv.pdf
-    // For now it just opens the link normally
-}
 
 // ===== Copy Email to Clipboard =====
 function initEmailCopy() {

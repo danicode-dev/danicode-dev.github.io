@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@600;700&family=Sixtyfour:BLED,SCAN@39,-11&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -29,33 +29,72 @@
         <header>
             <div class="container">
                 <nav>
-                    <!-- Left: Logo -->
+                    <!-- Left: Logo + Nav Icons -->
                     <div class="nav-left">
-                        <a href="#home" class="logo-brand" aria-label="Daniel García Portfolio">
-                            <div class="logo-wrapper">
-                                <img src="./assets/logo.png" alt="DG Logo" width="44" height="44"
-                                    style="border-radius: 0; mix-blend-mode: screen; display: block;">
-                            </div>
-                            <div class="logo-text">
-                                <span class="logo-first">Daniel</span>
-                                <span class="logo-last">García</span>
-                            </div>
+                        <!-- Logo Button -->
+                        <a href="#home" class="btn-nav-icon logo-btn" aria-label="Daniel García Portfolio">
+                            <img src="./assets/logo.png" alt="DG Logo" width="36" height="36">
                         </a>
-                        <ul class="nav-links">
-                            <li><a href="#home" class="nav-link active">Inicio</a></li>
-                            <li><a href="#projects" class="nav-link">Projects</a></li>
-                        </ul>
+                        <!-- Nav Icons -->
+                        <div class="nav-icons-group">
+                            <!-- Home -->
+                            <a href="#home" class="btn-nav-icon" aria-label="Inicio" data-nav="home">
+                                <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2"
+                                    stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                            </a>
+                            <!-- Projects -->
+                            <a href="#projects" class="btn-nav-icon" aria-label="Projects" data-nav="projects">
+                                <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2"
+                                    stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Right: Theme toggle + CTA -->
+                    <!-- Center: Theme Toggle -->
+                    <div class="nav-center">
+                        <!-- Theme Toggle - Animated Day/Night -->
+                        <label class="theme-switch">
+                            <input type="checkbox" class="theme-switch__checkbox" id="theme-toggle">
+                            <div class="theme-switch__container">
+                                <div class="theme-switch__clouds"></div>
+                                <div class="theme-switch__stars-container">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </div>
+                                <div class="theme-switch__circle-container">
+                                    <div class="theme-switch__sun-moon-container">
+                                        <div class="theme-switch__moon">
+                                            <div class="theme-switch__spot"></div>
+                                            <div class="theme-switch__spot"></div>
+                                            <div class="theme-switch__spot"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Right: CTA -->
                     <div class="nav-right">
-                        <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-label="Cambiar tema"
-                            aria-pressed="false" title="Cambiar tema">
-                            <i class="fas fa-sun" aria-hidden="true"></i>
-                        </button>
+                        <!-- Contact CTA - Animated Button -->
                         <a href="#contact" class="nav-cta">
-                            <i class="fas fa-envelope"></i>
-                            <span>Contacto</span>
+                            <div class="nav-cta-circle">
+                                <svg class="nav-cta-arrow" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="currentColor"
+                                        d="M12.175 9H0V7H12.175L6.575 1.4L8 0L16 8L8 16L6.575 14.6L12.175 9Z"></path>
+                                </svg>
+                            </div>
+                            <span class="nav-cta-text">Contact Me</span>
                         </a>
                     </div>
                 </nav>
@@ -90,78 +129,175 @@
 
                             <!-- CTA Buttons -->
                             <div class="hero-buttons">
-                                <a href="#projects" class="btn-hero btn-hero-primary">
-                                    Explore Projects
+                                <a href="#projects" class="btn-projects-animated">
+                                    <div class="code-wrapper">
+                                        <svg class="code-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline class="bracket-left" points="8 6 2 12 8 18"></polyline>
+                                            <polyline class="bracket-right" points="16 18 22 12 16 6"></polyline>
+                                            <line class="slash" x1="12" y1="4" x2="12" y2="20"></line>
+                                        </svg>
+                                    </div>
+                                    <span>Explore Projects</span>
                                 </a>
-                                <a href="./cv/index_cv.html" class="btn-hero btn-hero-secondary" target="_blank">
-                                    <i class="fas fa-eye"></i> Ver CV
+                                <a href="./cv/index_cv.html" class="btn-cv-animated" target="_blank">
+                                    <div class="book-wrapper">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 126 75"
+                                            class="book">
+                                            <rect stroke-width="5" stroke="currentColor" rx="7.5" height="70"
+                                                width="121" y="2.5" x="2.5" fill="transparent"></rect>
+                                            <line stroke-width="5" stroke="currentColor" y2="75" x2="63.5" x1="63.5">
+                                            </line>
+                                            <path stroke-linecap="round" stroke-width="4" stroke="currentColor"
+                                                d="M25 20H50" fill="none"></path>
+                                            <path stroke-linecap="round" stroke-width="4" stroke="currentColor"
+                                                d="M101 20H76" fill="none"></path>
+                                            <path stroke-linecap="round" stroke-width="4" stroke="currentColor"
+                                                d="M16 30L50 30" fill="none"></path>
+                                            <path stroke-linecap="round" stroke-width="4" stroke="currentColor"
+                                                d="M110 30L76 30" fill="none"></path>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 75" class="book-page">
+                                            <path stroke-linecap="round" stroke-width="4" stroke="currentColor"
+                                                d="M40 20H15" fill="none"></path>
+                                            <path stroke-linecap="round" stroke-width="4" stroke="currentColor"
+                                                d="M49 30L15 30" fill="none"></path>
+                                            <path stroke-width="5" stroke="currentColor"
+                                                d="M2.5 2.5H55C59.1421 2.5 62.5 5.85786 62.5 10V65C62.5 69.1421 59.1421 72.5 55 72.5H2.5V2.5Z"
+                                                fill="rgba(255,255,255,0.1)"></path>
+                                        </svg>
+                                    </div>
+                                    <span>View CV</span>
                                 </a>
                             </div>
 
                             <!-- Social Icons -->
-                            <div class="hero-social">
+                            <div class="hero-social-icons">
+                                <!-- GitHub -->
                                 <a href="https://github.com/danicode-dev" target="_blank" rel="noopener noreferrer"
-                                    aria-label="GitHub" class="hero-social-link">
-                                    <i class="fab fa-github"></i>
+                                    class="btn-social-icon" aria-label="GitHub">
+                                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2"
+                                        stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                        </path>
+                                    </svg>
                                 </a>
-                                <a href="https://www.linkedin.com/in/danielgarcíaortega-404754385" target="_blank"
-                                    rel="noopener noreferrer" aria-label="LinkedIn" class="hero-social-link">
-                                    <i class="fab fa-linkedin-in"></i>
+                                <!-- LinkedIn -->
+                                <a href="https://www.linkedin.com/in/daniel-garc%C3%ADa-ortega-404754385/"
+                                    target="_blank" rel="noopener noreferrer" class="btn-social-icon"
+                                    aria-label="LinkedIn">
+                                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2"
+                                        stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                        <path
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                        </path>
+                                        <rect x="2" y="9" width="4" height="12"></rect>
+                                        <circle cx="4" cy="4" r="2"></circle>
+                                    </svg>
                                 </a>
-                                <button type="button" class="hero-social-link copy-email-btn"
-                                    data-email="webdaniel2025@gmail.com" aria-label="Copy email" title="Copy email">
-                                    <i class="fas fa-envelope"></i>
+                                <!-- Email -->
+                                <button type="button" class="btn-social-icon copy-email-btn"
+                                    data-email="webdaniel2025@gmail.com" aria-label="Copy email">
+                                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2"
+                                        stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                        </path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Right Column: About Card -->
                         <div class="hero-right">
-                            <!-- About Card Restored -->
+                            <!-- About Card -->
                             <div class="about-card">
-                                <h3 class="about-card-title">About Me</h3>
+                                <!-- Title with Sixtyfour font -->
+                                <h3 class="about-title-retro">About Me</h3>
 
-                                <div class="about-card-info">
-                                    <div class="about-info-item">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span>Based in Granada, Spain</span>
+                                <!-- Stats Row -->
+                                <div class="stats-row">
+                                    <div class="stat-item">
+                                        <span class="stat-number">1+</span>
+                                        <span class="stat-label">Year of Experience</span>
                                     </div>
-                                    <div class="about-info-item">
-                                        <i class="fas fa-graduation-cap"></i>
-                                        <span>DAW Student • Java + Web Dev</span>
+                                    <div class="stat-item">
+                                        <span class="stat-number">4+</span>
+                                        <span class="stat-label">Projects</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </span>
+                                        <span class="stat-label">DAW Student</span>
                                     </div>
                                 </div>
 
-                                <div class="about-card-stack">
-                                    <div class="stack-item">
-                                        <span class="stack-label">🎨 Front-end</span>
-                                        <span class="stack-value">HTML · CSS · JavaScript</span>
-                                    </div>
-                                    <div class="stack-item">
-                                        <span class="stack-label">⚙️ Back-end</span>
-                                        <span class="stack-value">Java · MySQL</span>
-                                    </div>
-                                    <div class="stack-item">
-                                        <span class="stack-label">🧰 Tools</span>
-                                        <span class="stack-value">Git · GitHub · Linux · VS Code</span>
+                                <!-- Availability Section -->
+                                <div class="availability-section">
+                                    <h4 class="availability-title">Open to</h4>
+                                    <div class="availability-badges">
+                                        <span class="availability-badge badge-internship">
+                                            <i class="fas fa-briefcase"></i>
+                                            Internship
+                                        </span>
+                                        <span class="availability-badge badge-collab">
+                                            <i class="fas fa-handshake"></i>
+                                            Collaborations
+                                        </span>
+                                        <span class="availability-badge badge-location">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            Granada, Spain
+                                        </span>
                                     </div>
                                 </div>
 
-                                <div class="about-card-badges">
-                                    <span class="status-badge status-available">
-                                        <span class="status-dot"></span>
-                                        Open to internship
-                                    </span>
-                                    <span class="status-badge status-projects">
-                                        <i class="fas fa-rocket"></i>
-                                        Available for projects
-                                    </span>
+                                <!-- Tech Stack -->
+                                <div class="tech-stack-section">
+                                    <div class="stack-row">
+                                        <span class="stack-category">Frontend</span>
+                                        <div class="stack-badges">
+                                            <span class="tech-badge"><i class="fab fa-html5"></i> HTML</span>
+                                            <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS</span>
+                                            <span class="tech-badge"><i class="fab fa-js"></i> JS</span>
+                                            <span class="tech-badge"><i class="fab fa-angular"></i> Angular</span>
+                                            <span class="tech-badge"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                                            <span class="tech-badge"><i class="fab fa-sass"></i> Sass</span>
+                                        </div>
+                                    </div>
+                                    <div class="stack-row">
+                                        <span class="stack-category">Backend</span>
+                                        <div class="stack-badges">
+                                            <span class="tech-badge"><i class="fab fa-java"></i> Java</span>
+                                            <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
+                                            <span class="tech-badge"><i class="fas fa-leaf"></i> Spring</span>
+                                            <span class="tech-badge"><i class="fab fa-node-js"></i> Node</span>
+                                            <span class="tech-badge"><i class="fab fa-php"></i> PHP</span>
+                                        </div>
+                                    </div>
+                                    <div class="stack-row">
+                                        <span class="stack-category">Database</span>
+                                        <div class="stack-badges">
+                                            <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
+                                            <span class="tech-badge"><i class="fas fa-database"></i> Oracle</span>
+                                            <span class="tech-badge"><i class="fas fa-leaf"></i> MongoDB</span>
+                                        </div>
+                                    </div>
+                                    <div class="stack-row">
+                                        <span class="stack-category">Tools</span>
+                                        <div class="stack-badges">
+                                            <span class="tech-badge"><i class="fab fa-git-alt"></i> Git</span>
+                                            <span class="tech-badge"><i class="fab fa-github"></i> GitHub</span>
+                                            <span class="tech-badge"><i class="fab fa-linux"></i> Linux</span>
+                                            <span class="tech-badge"><i class="fab fa-docker"></i> Docker</span>
+                                            <span class="tech-badge"><i class="fab fa-figma"></i> Figma</span>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="about-card-now">
-                                    <span class="now-label">Now building</span>
-                                    <span class="now-value">Portfolio + real apps for daily use</span>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -284,122 +420,56 @@
                     </div>
                 </div>
             </section>
-            <!-- Contact Section - Glassmorphism Style -->
-            <section id="contact" class="contact-section">
-                <!-- Background Effects -->
-                <div class="contact-bg-grid"></div>
-                <div class="contact-bg-glow"></div>
-
+            <!-- Contact Section - Minimal Style -->
+            <section id="contact" class="contact-minimal">
                 <div class="container">
-                    <!-- Header -->
-                    <div class="contact-header">
-                        <h2 class="contact-title"><span class="title-featured">Get in</span> <span
-                                class="title-projects accentText">Touch</span></h2>
-                        <div class="contact-title-accent"></div>
-                        <p class="contact-subtitle">
-                            ¿Listo para dar vida a tus <span class="text-highlight accentText">ideas</span>?
-                            Creemos algo increíble juntos.
-                        </p>
+                    <!-- Logo with brackets -->
+                    <div class="contact-logo">
+                        <span class="bracket">{</span>
+                        <span class="logo-initials">DG</span>
+                        <span class="bracket">}</span>
                     </div>
 
-                    <!-- Cards Grid -->
-                    <div class="contact-grid">
-                        <!-- Left Card: Links -->
-                        <div class="contact-card contact-card-links">
-                            <h3 class="card-title"><span class="title-featured">Get in</span> <span
-                                    class="title-projects">Touch</span></h3>
+                    <!-- Title -->
+                    <h2 class="contact-title-minimal">Let's Work Together</h2>
 
-                            <div class="contact-links">
-                                <!-- Email -->
-                                <button type="button" class="contact-link copy-email-btn"
-                                    data-email="webdaniel2025@gmail.com">
-                                    <span class="contact-link-icon">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <rect x="2" y="4" width="20" height="16" rx="2" />
-                                            <path d="M22 6L12 13L2 6" />
-                                        </svg>
-                                    </span>
-                                    <span class="contact-link-content">
-                                        <span class="contact-link-label">Email</span>
-                                        <span class="contact-link-value">webdaniel2025@gmail.com</span>
-                                    </span>
-                                    <span class="copy-feedback">¡Copiado!</span>
-                                </button>
+                    <!-- Buttons -->
+                    <div class="contact-buttons">
+                        <a href="mailto:webdaniel2025@gmail.com" class="btn-contact-primary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <path d="M22 6L12 13L2 6" />
+                            </svg>
+                            Contact Me
+                        </a>
+                        <button type="button" class="btn-contact-secondary copy-email-btn"
+                            data-email="webdaniel2025@gmail.com">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy Email
+                        </button>
+                    </div>
 
-                                <!-- LinkedIn -->
-                                <a href="https://www.linkedin.com/in/daniel-garc%C3%ADa-ortega-404754385/"
-                                    target="_blank" rel="noopener noreferrer" class="contact-link">
-                                    <span class="contact-link-icon">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                            <path
-                                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                        </svg>
-                                    </span>
-                                    <span class="contact-link-content">
-                                        <span class="contact-link-label">LinkedIn</span>
-                                        <span class="contact-link-value">Daniel García Ortega</span>
-                                    </span>
-                                </a>
-
-                                <!-- GitHub -->
-                                <a href="https://github.com/danicode-dev" target="_blank" rel="noopener noreferrer"
-                                    class="contact-link">
-                                    <span class="contact-link-icon">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                            <path
-                                                d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                                        </svg>
-                                    </span>
-                                    <span class="contact-link-content">
-                                        <span class="contact-link-label">GitHub</span>
-                                        <span class="contact-link-value">danicode-dev</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Right Card: Form -->
-                        <div class="contact-card contact-card-form">
-                            <h3 class="card-title">Contact Me</h3>
-
-                            <form id="contact-form" class="contact-form" novalidate>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="contact-name">Name</label>
-                                        <input type="text" id="contact-name" name="name" placeholder="Tu nombre"
-                                            required>
-                                        <span class="form-error" aria-live="polite"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contact-email">Email</label>
-                                        <input type="email" id="contact-email" name="email" placeholder="tu@email.com"
-                                            required>
-                                        <span class="form-error" aria-live="polite"></span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="contact-message">Message</label>
-                                    <textarea id="contact-message" name="message" rows="4" placeholder="Tu mensaje..."
-                                        required></textarea>
-                                    <span class="form-error" aria-live="polite"></span>
-                                </div>
-
-                                <button type="submit" class="btn-submit">
-                                    <span class="btn-text"><span class="title-featured">Send</span> <span
-                                            class="title-projects accentText">Message</span></span>
-                                </button>
-
-                                <div class="form-success" aria-live="polite">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    <span>Abriendo tu cliente de correo...</span>
-                                </div>
-                            </form>
-                        </div>
+                    <!-- Social Icons -->
+                    <div class="contact-social">
+                        <a href="https://github.com/danicode-dev" target="_blank" rel="noopener noreferrer"
+                            class="social-icon-minimal" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/daniel-garc%C3%ADa-ortega-404754385/" target="_blank"
+                            rel="noopener noreferrer" class="social-icon-minimal" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -407,8 +477,7 @@
 
         <footer>
             <div class="container">
-                <p>&copy; 2025 Daniel Garcia.
-                <p>
+                <p>&copy; 2025 Daniel Garcia.</p>
             </div>
         </footer>
 

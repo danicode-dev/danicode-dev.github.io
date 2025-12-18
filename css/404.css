@@ -1,0 +1,346 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis:300,400,700,800");
+
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ===== Main Container ===== */
+.permission_denied {
+    background: #24344c !important;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Dosis", sans-serif;
+}
+
+.permission_denied a {
+    text-decoration: none;
+}
+
+/* ===== Particles Background ===== */
+#tsparticles {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.23;
+    z-index: 0;
+}
+
+/* ===== Main Wrapper ===== */
+.denied__wrapper {
+    max-width: 450px;
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+}
+
+/* ===== 404 Title ===== */
+.permission_denied h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 120px;
+    margin-bottom: 0px;
+    font-weight: 800;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Message ===== */
+.permission_denied h3 {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    line-height: 26px;
+    max-width: 350px;
+    margin: 10px auto 30px auto;
+    font-weight: 400;
+}
+
+.permission_denied h3 span {
+    position: relative;
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.permission_denied h3 span:after {
+    content: "";
+    border-bottom: 3px solid #ffbb39;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+}
+
+/* ===== Planet Container ===== */
+.planet-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.planet {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(255, 79, 84, 0.4));
+}
+
+/* ===== Astronaut ===== */
+#astronaut {
+    width: 60px;
+    height: auto;
+    position: fixed;
+    z-index: 100;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+    animation:
+        wanderX 25s ease-in-out infinite alternate,
+        wanderY 18s ease-in-out infinite alternate,
+        spinSlow 8s linear infinite;
+    pointer-events: none;
+}
+
+/* ===== Stars ===== */
+.stars-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.stars {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    animation: sparkle 1.6s infinite ease-in-out alternate;
+}
+
+.star-1 {
+    top: 120px;
+    left: 40px;
+    width: 25px;
+}
+
+.star-2 {
+    top: 350px;
+    left: 30px;
+    width: 15px;
+    animation-delay: 0.3s;
+}
+
+.star-3 {
+    top: 300px;
+    right: 50px;
+    width: 18px;
+    animation-delay: 0.6s;
+}
+
+.star-4 {
+    top: 380px;
+    right: 100px;
+    width: 12px;
+    animation-delay: 0.9s;
+}
+
+/* ===== Go Home Button ===== */
+.denied__link {
+    background: none;
+    color: #fff;
+    padding: 14px 40px;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 30px;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    margin-top: 30px;
+    font-family: "Dosis", sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.denied__link:hover {
+    color: #24344c;
+    background: #ffbb39;
+    border-color: #ffbb39;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 187, 57, 0.4);
+}
+
+/* ===== Animations ===== */
+@keyframes sparkle {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+}
+
+/* Astronaut wandering horizontally across screen */
+@keyframes wanderX {
+    0% {
+        left: 5%;
+    }
+
+    25% {
+        left: 70%;
+    }
+
+    50% {
+        left: 40%;
+    }
+
+    75% {
+        left: 85%;
+    }
+
+    100% {
+        left: 15%;
+    }
+}
+
+/* Astronaut wandering vertically across screen */
+@keyframes wanderY {
+    0% {
+        top: 10%;
+    }
+
+    20% {
+        top: 60%;
+    }
+
+    40% {
+        top: 25%;
+    }
+
+    60% {
+        top: 75%;
+    }
+
+    80% {
+        top: 40%;
+    }
+
+    100% {
+        top: 15%;
+    }
+}
+
+/* Slow rotation for astronaut */
+@keyframes spinSlow {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Planet hover animation */
+.saturn {
+    animation: hover 3s ease-in-out infinite;
+}
+
+@keyframes hover {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+    .permission_denied h1 {
+        font-size: 80px;
+    }
+
+    .permission_denied h3 {
+        font-size: 15px;
+        max-width: 280px;
+        line-height: 22px;
+    }
+
+    .planet-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    #astronaut {
+        width: 40px;
+        right: 20px;
+        top: 140px;
+    }
+
+    .star-1 {
+        top: 100px;
+        left: 20px;
+    }
+
+    .star-2 {
+        top: 280px;
+        left: 15px;
+    }
+
+    .star-3 {
+        top: 240px;
+        right: 30px;
+    }
+
+    .star-4 {
+        top: 300px;
+        right: 60px;
+    }
+
+    .denied__link {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .permission_denied h1 {
+        font-size: 65px;
+    }
+
+    .planet-container {
+        width: 160px;
+        height: 160px;
+    }
+
+    #astronaut {
+        width: 35px;
+        right: 10px;
+        top: 120px;
+    }
+}

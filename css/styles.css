@@ -3030,3 +3030,96 @@ button.contact-link:hover {
   position: relative;
   z-index: 1;
 }
+
+/* Floating Astronaut */
+.floating-astronaut {
+  position: fixed;
+  z-index: 100;
+  width: 80px;
+  height: auto;
+  pointer-events: auto;
+  /* Bounce movement: using X and Y separate animations for better bouncing effect */
+  animation:
+    moveX 60s linear infinite alternate,
+    moveY 73s linear infinite alternate;
+  left: 0;
+  top: 0;
+  will-change: transform;
+}
+
+.floating-astronaut img {
+  width: 100%;
+  height: auto;
+  /* Self rotation */
+  animation: spinAstronaut 20s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.floating-astronaut:hover img {
+  filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.8));
+  /* Pause rotation on hover if desired, or speed up */
+  animation-play-state: paused;
+}
+
+/* Linear bounce movement */
+@keyframes moveX {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(100vw - 80px);
+  }
+}
+
+@keyframes moveY {
+  from {
+    top: 0;
+  }
+
+  to {
+    top: calc(100vh - 80px);
+  }
+}
+
+/* Self rotation */
+@keyframes spinAstronaut {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile check */
+@media (max-width: 768px) {
+  .floating-astronaut {
+    width: 50px;
+    animation:
+      moveX 40s linear infinite alternate,
+      moveY 49s linear infinite alternate;
+  }
+
+  @keyframes moveX {
+    from {
+      left: 0;
+    }
+
+    to {
+      left: calc(100vw - 50px);
+    }
+  }
+
+  @keyframes moveY {
+    from {
+      top: 0;
+    }
+
+    to {
+      top: calc(100vh - 50px);
+    }
+  }
+}
